@@ -75,42 +75,10 @@ class StudentForm extends CFormModel {
      * Declares customized attribute labels.
      * If not declared here, an attribute would have a label that is
      * the same as its name with the first letter in upper case.
-    */
-    
+     */
     public function attributeLabels() {
         return array(
-            'id' => 'ID',
-            'file_cv_name' => 'Βιογραφικό',
-            'file_grades_name' => 'Αναλυτική Βαθμολογία',
-            'file_ika' => 'Βεβαίωση ΙΚΑ',
-            'user_id' => 'ID χρήστη',
-            'department' => 'Τμήμα',
-            'father_name' => 'Όνομα Πατρός',
-            'mother_name' => 'Όνομα Μητρός',
-            'address' => 'Διεύθυνση',
-            'gender' => 'Φύλο',
-            'identity_number' => 'Αριθμός Α.Τ.',
-            'afm' => 'ΑΦΜ',
-            'doy' => 'ΔΟΥ',
-            'ama_ika' => 'ΑΜΑ ΙΚΑ',
-            'amka' => 'ΑΜΚΑ',
-            'year_in' => 'Έτος εισαγωγής',
-            'birth_day' => 'Ημερομηνία Γέννησης',
-            'IBAN' => 'IBAN',
-            'counter_requests'=>'μέτρηση αιτήσεων',
             'verifyCode' => 'Verification Code',
-            'id' => 'ID',
-			'username' => 'Όνομα Χρήστη',
-			'password' => 'Κωδικός',
-			'activated' => 'Activated',
-			'last_name' => 'Επώνυμο',
-			'first_name' => 'Όνομα',
-			'act_code' => 'Act Code',
-			'email' => 'Email',
-			'telephone' => 'Τηλέφωνο',
-			'type' => 'Τύπος',
-			'aem' => 'ΑΕΜ',
-			'academicid' => 'Academicid',
         );
     }
 

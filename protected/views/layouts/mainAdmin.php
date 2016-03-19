@@ -47,8 +47,8 @@
                                 array('label'=>'Καθηγητές', 'url'=>array('/Admin/professor')),
                                 array('label'=>'Εταιρείες', 'url'=>array('/Admin/company')),
                                 //array('label'=>'Αιτήσεις εταιρείων', 'url'=>array('/Admin/company')),
-                                array('label'=>'Αιτήσεις φοιτητών', 'url'=>array('/Admin/requestinternship/viewRequests')),
-                                array('label'=>'Θέσεις πρακτικής άσκησης', 'url'=>array('/Admin/internshipposition')),
+                                array('label'=>'Αιτήσεις φοιτητών', 'url'=>array('/Admin/requestInternship/viewRequests')),
+                                array('label'=>'Θέσεις πρακτικής άσκησης', 'url'=>array('/Admin/internshipPosition')),
 				//array('label'=>'Users','url'=>array('/Admin/users')),
                                 //array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Αποσύνδεση ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)

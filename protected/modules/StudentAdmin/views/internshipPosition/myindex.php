@@ -58,14 +58,14 @@ $this->menu=array(
 
 if($model->status==1){
 $month;
-echo CHtml::link('1ος μήνας', array('internshipposition/myindex', 'month'=>1));  ?>
+echo CHtml::link('1ος μήνας', array('internshipPosition/myindex', 'month'=>1));  ?>
 
 
 <?php 
 
 if ($month==1){
     
-        echo str_repeat('&nbsp;',160); echo CHtml::link('κλείσιμο', array('internshipposition/myindex',  'month'=>0)); 
+        echo str_repeat('&nbsp;',160); echo CHtml::link('κλείσιμο', array('internshipPosition/myindex',  'month'=>0)); 
 
     
 $this->widget('booster.widgets.TbDetailView', array(
@@ -90,11 +90,11 @@ $this->widget('booster.widgets.TbDetailView', array(
 
 
 echo '<br/>';
-echo CHtml::link('2ος μήνας', array('internshipposition/myindex', 'id'=>$model->id , 'month'=>2));  
+echo CHtml::link('2ος μήνας', array('internshipPosition/myindex', 'id'=>$model->id , 'month'=>2));  
 
 if ($month==2){
     
-        echo str_repeat('&nbsp;',160); echo CHtml::link('κλείσιμο', array('internshipposition/myindex',  'month'=>0)); 
+        echo str_repeat('&nbsp;',160); echo CHtml::link('κλείσιμο', array('internshipPosition/myindex',  'month'=>0)); 
 
     
 $this->widget('booster.widgets.TbDetailView', array(
@@ -119,12 +119,12 @@ $this->widget('booster.widgets.TbDetailView', array(
 
 
 echo '<br/>';
-echo CHtml::link('3ος μήνας', array('internshipposition/myindex',  'month'=>3)); 
+echo CHtml::link('3ος μήνας', array('internshipPosition/myindex',  'month'=>3)); 
 
 
 if ($month==3){
 //str_repeat('&nbsp;', 5);
-        echo str_repeat('&nbsp;',160); echo CHtml::link('κλείσιμο', array('internshipposition/myindex', 'month'=>0)); 
+        echo str_repeat('&nbsp;',160); echo CHtml::link('κλείσιμο', array('internshipPosition/myindex', 'month'=>0)); 
 
     
 $this->widget('booster.widgets.TbDetailView', array(

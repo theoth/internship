@@ -39,6 +39,29 @@ class InternshipPositionController extends Controller {
         );
     }
 
+	
+	public function SendMail($pid,$body)
+    {   
+                $professor=Professor::model()->findByPk($cid);
+                $name = '=?UTF-8?B?' . base64_encode('Πλατφόρμα πρακτικής άσκησης') . '?=';
+                $subject = '=?UTF-8?B?' . base64_encode('Υποβολή στοιχείων') . '?=';
+                $headers = "From: $name <{'e-position'}>\r\n" .
+                        "Reply-To: {'e-position@gmail.com'}\r\n" .
+                        "MIME-Version: 1.0\r\n" .
+                        "Content-Type: text/plain; charset=UTF-8";
+                $email=$professor->user->email;
+                
+               // if (!YII_DEBUG)
+                    mail($email, $subject, $body, $headers);
+                /*else {
+                    var_dump($name );
+                    var_dump($subject);
+                    var_dump($headers);
+                    var_dump($body);
+                }*/
+                //Yii::app()->user->setFlash('contact', 'Thank you for contacting us. We will respond to you as soon as possible.');
+                //$this->refresh();      
+    }
     /**
      * Displays a particular model.
      * @param integer $id the ID of the model to be displayed

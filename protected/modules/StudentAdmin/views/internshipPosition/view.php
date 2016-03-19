@@ -8,7 +8,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Πίσω', 'url'=>'index.php?r=StudentAdmin/internshipposition'),
+	array('label'=>'Πίσω', 'url'=>'index.php?r=StudentAdmin/internshipPosition'),
 );
 
 

@@ -124,6 +124,7 @@ class InternshipPositionController extends Controller {
      * Lists all models.
      */
     public function actionIndex() {
+	 
         $criteria = new CDbCriteria();
         $criteria->addCondition('student_id IS NULL');
         $criteria->addCondition('published=1');
@@ -162,23 +163,23 @@ class InternshipPositionController extends Controller {
     
     public function SendMail($sid,$body)
     {   
-                $student=Student::model()->findByPk($sid);
+                $student=Student::model()->findByPk($cid);
                 $name = '=?UTF-8?B?' . base64_encode('Πλατφόρμα πρακτικής άσκησης') . '?=';
-                $subject = '=?UTF-8?B?' . base64_encode('Υπενθύμιση υποβολής στοιχείων') . '?=';
-                $headers = "From: $name <{'admin@admin.gr'}>\r\n" .
-                        "Reply-To: {'admin@admin.gr'}\r\n" .
+                $subject = '=?UTF-8?B?' . base64_encode('Υποβολή στοιχείων') . '?=';
+                $headers = "From: $name <{'e-position'}>\r\n" .
+                        "Reply-To: {'e-position@gmail.com'}\r\n" .
                         "MIME-Version: 1.0\r\n" .
                         "Content-Type: text/plain; charset=UTF-8";
                 $email=$student->users->email;
                 
-                if (!YII_DEBUG)
+               // if (!YII_DEBUG)
                     mail($email, $subject, $body, $headers);
-                else {
+                /*else {
                     var_dump($name );
                     var_dump($subject);
                     var_dump($headers);
                     var_dump($body);
-                }
+                }*/
                 //Yii::app()->user->setFlash('contact', 'Thank you for contacting us. We will respond to you as soon as possible.');
                 //$this->refresh();      
     }

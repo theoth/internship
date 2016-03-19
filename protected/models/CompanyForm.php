@@ -54,28 +54,6 @@ class CompanyForm extends CFormModel {
     public function attributeLabels() {
         return array(
             'verifyCode' => 'Verification Code',
-            'id' => 'ID',
-            'brand' => 'Brand',
-            'description' => 'Περιγραφή',
-            'user_id' => 'ID Χρήστη',
-            'afm' => 'ΑΦΜ',
-            'doy' => 'ΔΟΥ',
-            'tk' => 'Τ.Κ.',
-            'identity_number' => 'Αριθμός Α.Τ.',
-            'address' => 'Διεύθυνση',
-            'city' => 'Πόλη',
-            'id' => 'ID',
-			'username' => 'Όνομα Χρήστη',
-			'password' => 'Κωδικός',
-			'activated' => 'Activated',
-			'last_name' => 'Επώνυμο',
-			'first_name' => 'Όνομα',
-			'act_code' => 'Act Code',
-			'email' => 'Email',
-			'telephone' => 'Τηλέφωνο',
-			'type' => 'Τύπος',
-			'aem' => 'ΑΕΜ',
-			'academicid' => 'Academicid',
         );
     }
 

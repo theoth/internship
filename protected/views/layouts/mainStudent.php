@@ -46,9 +46,9 @@
                                array('label'=>'αρχική σελίδα', 'url'=>array('/StudentAdmin/site')),
                                 //array('label'=>'Professors', 'url'=>array('/Admin/professor')),
                                 //array('label'=>'Companies', 'url'=>array('/Admin/company')),
-                                array('label'=>'Οι αιτήσεις μου', 'url'=>array('/StudentAdmin/requestinternship')),
-                                array('label'=>'Θέσεις πρακτικής άσκησης', 'url'=>array('/StudentAdmin/internshipposition')),
-                                array('label'=>'Η θέση μου', 'url'=>array('/StudentAdmin/internshipposition/myindex')),
+                                array('label'=>'Οι αιτήσεις μου', 'url'=>array('/StudentAdmin/requestInternship')),
+                                array('label'=>'Θέσεις πρακτικής άσκησης', 'url'=>array('/StudentAdmin/internshipPosition')),
+                                array('label'=>'Η θέση μου', 'url'=>array('/StudentAdmin/internshipPosition/myindex')),
 				//array('label'=>'Users','url'=>array('/Admin/users')),
                                 array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
