@@ -25,15 +25,13 @@ class InternshipPositionController extends Controller {
      */
     public function accessRules() {
         return array(
-            
-             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'index', 'view', 'admin', 'delete','award'),
+            array('allow', // allow authenticated user to perform 'create' and 'update' actions
+                'actions' => array('create', 'update', 'index', 'view', 'admin', 'delete', 'award','history'),
                 'expression' => array('Controller', 'isUserAdmin'),
             ),
             array('deny', // deny all users
                 'users' => array('*'),
             ),
-            
         );
     }
 
@@ -83,8 +81,10 @@ class InternshipPositionController extends Controller {
 
         if (isset($_POST['InternshipPosition'])) {
             $model->attributes = $_POST['InternshipPosition'];
+
             if ($model->save())
                 $this->redirect(array('view', 'id' => $model->id));
+            //var_dump(CHtml::errorSummary($model)); die();
         }
 
         $this->render('update', array(
@@ -92,38 +92,48 @@ class InternshipPositionController extends Controller {
         ));
     }
 
-    public function actionAward($id, $sid,$rid) {
+    public function actionAward($id, $sid, $rid) {
         $model = $this->loadModel($id);
-            $student = Student::model()->findByPk($sid);
+        $student = Student::model()->findByPk($sid);
+
+
+
 
         if (isset($_POST['confirm'])) {
+
             $model->student_id = $sid;
             $model->status = 1;
-            $student->is_in=1;
-            $student->save();
-            
-            
-            $r=RequestInternship::model()->findByAttributes(array('student_id'=>$sid));
 
-            //$tr=$
-            
-            //foreach ($r as $i) {
-            
-            
-            $r->status=1;    
-            
-            //}
-            //θέλουμε για κάθε θέση που έχει κάνει οι φοιτητής να γίνεται 1 το status.
-            //var_dump($r);
-            
-            $r->save();
-            
-            if ($model->save()) {
-                
+            if ($model->save(false)) {
+
+
+                $student->is_in = 1;
+                $student->save();
+
+                $r_success = RequestInternship::model()->findByAttributes(array('id' => $rid)); //i aitisi poy ekplirothike
+
+
+                $r = RequestInternship::model()->findAllByAttributes(array('student_id' => $sid), 'id<>:rid', array(':rid' => $rid));
+
+                //$tr=$
+                //foreach ($r as $i) {
+                //oi ypoloipes aitiseis plin autis poy afora tin thesi pou dothike ginontai 2, ws mi ekplirosimes diladi
+                foreach ($r as $i) {
+                    $i->status = 2;
+                    $i->save();
+                }
+
+                $r_success->status = 1;
+                //i thesi pou ekplirothike ginetai 1
+
+
+                $r_success->save();
+
                 $this->redirect(array('view', 'id' => $model->id));
             }
+            //echo CHtml::errorSummary($model);die();
         }
-       //var_dump(CHtml::errorSummary($model));
+        //var_dump(CHtml::errorSummary($model));
 
         $this->render('award', array(
             'model' => $model,
@@ -165,6 +175,18 @@ class InternshipPositionController extends Controller {
             $model->attributes = $_GET['InternshipPosition'];
 
         $this->render('admin', array(
+            'model' => $model,
+        ));
+    }
+    
+    public function actionHistory() {
+        $model = new InternshipPosition('searchCompleted');
+        
+        $model->unsetAttributes();  // clear any default values
+        if (isset($_GET['InternshipPosition']))
+            $model->attributes = $_GET['InternshipPosition'];
+
+        $this->render('history', array(
             'model' => $model,
         ));
     }

@@ -25,17 +25,13 @@ class InternshipPositionController extends Controller {
      */
     public function accessRules() {
         return array(
-            
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'index', 'view', 'admin', 'delete','myindex'),
+                'actions' => array('create', 'update', 'index', 'view', 'admin', 'delete', 'myindex'),
                 'expression' => array('Controller', 'isUserStudent'),
             ),
             array('deny', // deny all users
                 'users' => array('*'),
             ),
-            
-            
-            
         );
     }
 
@@ -44,18 +40,15 @@ class InternshipPositionController extends Controller {
      * @param integer $id the ID of the model to be displayed
      */
     public function actionView($id) {
-        
+
         $model = new InternshipPosition('search');
         $model->unsetAttributes();  // clear any default values
         if (isset($_GET['InternshipPosition']))
             $model->attributes = $_GET['InternshipPosition'];
-        
+
         $this->render('view', array(
             'model' => $this->loadModel($id),
         ));
-        
-         
-
     }
 
     /**
@@ -79,6 +72,12 @@ class InternshipPositionController extends Controller {
         ));
     }
 
+    public function end_internship($id) {
+        $model = $this->loadModel($id);
+        $model->status = 2;
+        $model->save();
+    }
+
     /**
      * Updates a particular model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -90,12 +89,12 @@ class InternshipPositionController extends Controller {
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
-        $st = Student::model()->findByAttributes(array('user_id'=>Yii::app()->user->id));
+        $st = Student::model()->findByAttributes(array('user_id' => Yii::app()->user->id));
         if ($model->student_id != $st->id) {
-            throw new CHttpException(404,'You are not authorized to perform this action.');
+            throw new CHttpException(404, 'You are not authorized to perform this action.');
         }
-        
-        
+
+
         if (isset($_POST['InternshipPosition'])) {
             $model->attributes = $_POST['InternshipPosition'];
             if ($model->save())
@@ -124,73 +123,72 @@ class InternshipPositionController extends Controller {
      * Lists all models.
      */
     public function actionIndex() {
-	 
+
         $criteria = new CDbCriteria();
         $criteria->addCondition('student_id IS NULL');
         $criteria->addCondition('published=1');
         $student = Student::model()->findByAttributes(array('user_id' => Yii::app()->user->id));
-        
+
         $dataProvider = new CActiveDataProvider('InternshipPosition', array('criteria' => $criteria));
         $this->render('index', array(
             'dataProvider' => $dataProvider,
-            'student'=>$student,
+            'student' => $student,
         ));
     }
-    
+
     public function actionMyindex($month = NULL) {
         $criteria = new CDbCriteria();
         //$criteria->addCondition('student_id IS NULL');
         //$criteria->addCondition('published=1');
         $student = Student::model()->findByAttributes(array('user_id' => Yii::app()->user->id));
-        $criteria->compare('student_id',$student->id);
+        $criteria->compare('student_id', $student->id);
         $dataProvider = new CActiveDataProvider('InternshipPosition', array('criteria' => $criteria));
         //$model=$this->loadModel($student->internshipposition->id);
         //echo ($student->id);
-        $model=InternshipPosition::model()->findByAttributes(array('student_id' => $student->id));
+        $model = InternshipPosition::model()->findByAttributes(array('student_id' => $student->id));
         ////var_dump($in);
         //echo ($model->title);
         //die();
         //if (empty($model))
-            //die();
-        
+        //die();
+
         $this->render('myindex', array(
             'model' => $model,
             'dataProvider' => $dataProvider,
-            'student'=>$student,
+            'student' => $student,
             'month' => $month,
         ));
     }
-    
-    public function SendMail($sid,$body)
-    {   
-                $student=Student::model()->findByPk($cid);
-                $name = '=?UTF-8?B?' . base64_encode('Πλατφόρμα πρακτικής άσκησης') . '?=';
-                $subject = '=?UTF-8?B?' . base64_encode('Υποβολή στοιχείων') . '?=';
-                $headers = "From: $name <{'e-position'}>\r\n" .
-                        "Reply-To: {'e-position@gmail.com'}\r\n" .
-                        "MIME-Version: 1.0\r\n" .
-                        "Content-Type: text/plain; charset=UTF-8";
-                $email=$student->users->email;
-                
-               // if (!YII_DEBUG)
-                    mail($email, $subject, $body, $headers);
-                /*else {
-                    var_dump($name );
-                    var_dump($subject);
-                    var_dump($headers);
-                    var_dump($body);
-                }*/
-                //Yii::app()->user->setFlash('contact', 'Thank you for contacting us. We will respond to you as soon as possible.');
-                //$this->refresh();      
+
+    public function SendMail($sid, $body) {
+        $student = Student::model()->findByPk($cid);
+        $name = '=?UTF-8?B?' . base64_encode('Πλατφόρμα πρακτικής άσκησης') . '?=';
+        $subject = '=?UTF-8?B?' . base64_encode('Υποβολή στοιχείων') . '?=';
+        $headers = "From: $name <{'e-position'}>\r\n" .
+                "Reply-To: {'e-position@gmail.com'}\r\n" .
+                "MIME-Version: 1.0\r\n" .
+                "Content-Type: text/plain; charset=UTF-8";
+        $email = $student->users->email;
+
+        // if (!YII_DEBUG)
+        mail($email, $subject, $body, $headers);
+        /* else {
+          var_dump($name );
+          var_dump($subject);
+          var_dump($headers);
+          var_dump($body);
+          } */
+        //Yii::app()->user->setFlash('contact', 'Thank you for contacting us. We will respond to you as soon as possible.');
+        //$this->refresh();      
     }
 
     /**
      * Manages all models.
      */
     public function actionAdmin() {
-        
-       
-        
+
+
+
         $model = new InternshipPosition('search');
         $model->unsetAttributes();  // clear any default values
         if (isset($_GET['InternshipPosition']))

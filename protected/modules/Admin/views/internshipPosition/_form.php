@@ -23,7 +23,7 @@ $Students=Student::GetList();
     <br>
     <br>
 
-	<?php //echo $form->errorSummary($model); ?>
+	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
         

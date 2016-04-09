@@ -267,6 +267,56 @@ class InternshipPosition extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+        
+        public function searchCompleted()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('id',$this->id);
+		$criteria->compare('date_start',$this->date_start,true);
+		$criteria->compare('date_end',$this->date_end,true);
+		$criteria->compare('grade',$this->grade);
+		$criteria->compare('company_id',$this->company_id);
+		$criteria->compare('professor_id',$this->professor_id);
+		$criteria->compare('student_id',$this->student_id);
+		$criteria->compare('status_submit_student',$this->status_submit_student);
+		$criteria->compare('status_submit_company',$this->status_submit_company);
+		$criteria->compare('status_submit_professor',$this->status_submit_professor);
+		$criteria->compare('status',2);
+		$criteria->compare('title',$this->title,true);
+		$criteria->compare('description',$this->description,true);
+		$criteria->compare('published',$this->published);
+		$criteria->compare('year',$this->year);
+		$criteria->compare('st_absence1',$this->st_absence1);
+		$criteria->compare('st_text1',$this->st_text1,true);
+		$criteria->compare('st_notes1',$this->st_notes1,true);
+		$criteria->compare('st_text2',$this->st_text2,true);
+		$criteria->compare('st_notes2',$this->st_notes2,true);
+		$criteria->compare('st_text3',$this->st_text3,true);
+		$criteria->compare('st_notes3',$this->st_notes3,true);
+		$criteria->compare('st_absence2',$this->st_absence2);
+		$criteria->compare('st_absence3',$this->st_absence3);
+		$criteria->compare('st_final_text',$this->st_final_text,true);
+		$criteria->compare('st_final_notes',$this->st_final_notes,true);
+		$criteria->compare('co_absence1',$this->co_absence1);
+		$criteria->compare('co_absence2',$this->co_absence2);
+		$criteria->compare('co_absence3',$this->co_absence3);
+		$criteria->compare('co_text1',$this->co_text1,true);
+		$criteria->compare('co_notes1',$this->co_notes1,true);
+		$criteria->compare('co_text2',$this->co_text2,true);
+		$criteria->compare('co_notes2',$this->co_notes2,true);
+		$criteria->compare('co_text3',$this->co_text3,true);
+		$criteria->compare('co_notes3',$this->co_notes3,true);
+		$criteria->compare('co_final_text',$this->co_final_text,true);
+		$criteria->compare('co_final_notes',$this->co_final_notes,true);
+		$criteria->compare('prof_final_text',$this->prof_final_text,true);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
 
 	/**
 	 * Returns the static model of the specified AR class.
@@ -289,24 +339,30 @@ class InternshipPosition extends CActiveRecord
        
                 
     
-    public function beforeSave(){
+    public function beforeValidate(){
         //$month_current=date('n');
-        $date_current=date('y-m-d');
-        if (parent::beforeSave()){ 
+        
+        
+        $date_current=date('yyyy-MM-dd');
+        
+        if (parent::beforeValidate()){
+            
+            
+            
             if($this->period==1){
-                if($date_current>date('y').'-01-01') {
-                    $this->date_start =date('y', strtotime('+1 year')).'-01-01';
+                if($date_current>date('yyyy').'-01-01') {
+                    $this->date_start =date('yyyy', strtotime('+1 year')).'-01-01';
                     
                     
                     
                     
                 }
                 else {
-                    $this->date_start =date('y').'-01-01';
+                    $this->date_start =date('yyyy').'-01-01';
                     
                     
                 }
-                $this->date_end = date('y-m-d', strtotime("+3 months -1 days", strtotime($this->date_start)));
+                $this->date_end = date('yyyy-MM-dd', strtotime("+3 months -1 days", strtotime($this->date_start)));
             
         }
         
@@ -315,39 +371,39 @@ class InternshipPosition extends CActiveRecord
         //var_dump($date_current > date('y').'-04-01');
         //die();
         if($this->period==2){
-                if($date_current>date('y').'-04-01') {
-                    $this->date_start =date('y', strtotime('+1 year')).'-04-01';
+                if($date_current>date('yyyy').'-04-01') {
+                    $this->date_start =date('yyyy', strtotime('+1 year')).'-04-01';
                     
                 }
                 else {
-                    $this->date_start =date('y').'-04-01';
+                    $this->date_start =date('yyyy').'-04-01';
                 }
-            $this->date_end = date('y-m-d', strtotime("+3 months -1 days", strtotime($this->date_start)));
+            $this->date_end = date('yyyy-MM-dd', strtotime("+3 months -1 days", strtotime($this->date_start)));
         } 
         
         if($this->period==3){
-                if($date_current>date('y').'-07-01') {
-                    $this->date_start =date('y', strtotime('+1 year')).'-07-01';
+                if($date_current>date('yyyy').'-07-01') {
+                    $this->date_start =date('yyyy', strtotime('+1 year')).'-07-01';
                 }
                 else {
-                    $this->date_start =date('y').'-07-01';
+                    $this->date_start =date('yyyy').'-07-01';
                 }
-            $this->date_end = date('y-m-d', strtotime("+3 months -1 days", strtotime($this->date_start)));
+            $this->date_end = date('yyyy-MM-dd', strtotime("+3 months -1 days", strtotime($this->date_start)));
         }
         
         if($this->period==4){
-                if($date_current>date('y').'-10-01') {
-                    $this->date_start =date('y', strtotime('+1 year')).'-10-01';
+                if($date_current>date('yyyy').'-10-01') {
+                    $this->date_start =date('yyyy', strtotime('+1 year')).'-10-01';
                 }
                 else {
-                    $this->date_start =date('y').'-10-01';
+                    $this->date_start =date('yyyy').'-10-01';
                 }
-         $this->date_end = date('y-m-d', strtotime("+3 months -1 days", strtotime($this->date_start)));
+         $this->date_end = date('yyyy-MM-dd', strtotime("+3 months -1 days", strtotime($this->date_start)));
         }
         
     }
-    
-    
+    //$this->date_end='2017-06-30';
+    //var_dump($this->date_end);
     
     return true;
     }

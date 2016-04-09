@@ -9,6 +9,7 @@ $this->breadcrumbs=array(
 $this->menu=array(
 	array('label'=>'Δημιουργία νέας θέσης', 'url'=>array('create')),
 	array('label'=>'Αναζήτηση θέσεων', 'url'=>array('admin')),
+        array('label'=>'Ιστορικό', 'url'=>array('history')),
 );
 ?>
 

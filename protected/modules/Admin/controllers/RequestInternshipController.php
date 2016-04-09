@@ -59,12 +59,15 @@ class RequestInternshipController extends Controller
                         
                         'condition'=>'t.status=3',          
                         'with'=>array(
+                              
                                 'requestInternships' => array(
-                                //'on'=>"categories.is_active = 1  AND categories.id = ".$categories_id, 
+                                //'on'=>"".$categories_id,
+                                'condition'=>'requestInternships.status=0',
                                 'joinType' => 'INNER JOIN', 
                                 //'order' => 'categories.position ASC',
                                                         )                       
-                                ),
+                                ),'together'=>true,
+
                     ),
                     'pagination'=>array(
                         'pageSize'=>10,

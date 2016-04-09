@@ -5,6 +5,7 @@
 ?>
 
 <div class="form">
+    
     <?php
     $form = $this->beginWidget('CActiveForm', array(
         'id' => 'internship-position-form',
@@ -14,6 +15,10 @@
         // See class documentation of CActiveForm for details on this.
         'enableAjaxValidation' => false,
     ));
+    echo $form->errorSummary($model);
+    echo $model->date_start;
+    echo '<br>';
+    echo $model->date_end;
     ?>
     <?php
     $this->menu=array(

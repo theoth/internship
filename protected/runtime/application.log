@@ -34501,3 +34501,1281 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/internship/index.php?r=r=Admin/requestInternship/admin
 ---
+2016/03/24 20:20:44 [error] [php] Undefined variable: time (C:\wamp\www\internship\protected\modules\StudentAdmin\views\internshipPosition\_form.php:48)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(869): InternshipPositionController->renderFile()
+#1 C:\wamp\www\internship\protected\modules\StudentAdmin\views\internshipPosition\update.php(21): InternshipPositionController->renderPartial()
+#2 C:\wamp\www\yii\framework\web\CBaseController.php(126): require()
+#3 C:\wamp\www\yii\framework\web\CBaseController.php(95): InternshipPositionController->renderInternal()
+#4 C:\wamp\www\yii\framework\web\CController.php(869): InternshipPositionController->renderFile()
+#5 C:\wamp\www\yii\framework\web\CController.php(782): InternshipPositionController->renderPartial()
+#6 C:\wamp\www\internship\protected\modules\StudentAdmin\controllers\InternshipPositionController.php(107): InternshipPositionController->render()
+#7 unknown(0): InternshipPositionController->actionUpdate()
+#8 C:\wamp\www\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#9 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#10 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#11 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): InternshipPositionController->runAction()
+#12 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#14 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): InternshipPositionController->filterAccessControl()
+#15 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#16 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\wamp\www\yii\framework\web\CController.php(265): InternshipPositionController->runActionWithFilters()
+#18 C:\wamp\www\yii\framework\web\CWebApplication.php(282): InternshipPositionController->run()
+#19 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\wamp\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#21 C:\wamp\www\internship\index.php(16): CWebApplication->run()
+REQUEST_URI=/internship/index.php?r=StudentAdmin/internshipPosition/update&id=20
+in C:\wamp\www\internship\protected\modules\StudentAdmin\views\internshipPosition\_form.php (48)
+in C:\wamp\www\internship\protected\modules\StudentAdmin\views\internshipPosition\update.php (21)
+in C:\wamp\www\internship\protected\modules\StudentAdmin\controllers\InternshipPositionController.php (107)
+2016/03/24 20:36:01 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`internship`.`request_internship`, CONSTRAINT `fk_request_intership_internship_position1` FOREIGN KEY (`internship_position_id`) REFERENCES `internship_position` (`id`) ON DELETE NO ACTION ON ). The SQL statement executed was: DELETE FROM `internship_position` WHERE `internship_position`.`id`=20.
+in C:\wamp\www\internship\protected\modules\Admin\controllers\InternshipPositionController.php (141)
+in C:\wamp\www\internship\index.php (16)
+2016/03/24 20:36:01 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`internship`.`request_internship`, CONSTRAINT `fk_request_intership_internship_position1` FOREIGN KEY (`internship_position_id`) REFERENCES `internship_position` (`id`) ON DELETE NO ACTION ON ). The SQL statement executed was: DELETE FROM `internship_position` WHERE `internship_position`.`id`=20' in C:\wamp\www\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(1807): CDbCommand->execute()
+#1 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(1227): CActiveRecord->deleteByPk('20')
+#2 C:\wamp\www\internship\protected\modules\Admin\controllers\InternshipPositionController.php(141): CActiveRecord->delete()
+#3 [internal function]: InternshipPositionController->actionDelete('20')
+#4 C:\wamp\www\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(InternshipPositionController), Array)
+#5 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(InternshipPositionController), Object(ReflectionMethod), Array)
+#6 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\wamp\www\yii\framework\web\CController.php(1116): CFilterChain->run()
+#9 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#10 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#18 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Admin/internshi...')
+#19 C:\wamp\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#20 C:\wamp\www\internship\index.php(16): CApplication->run()
+#21 {main}
+REQUEST_URI=/internship/index.php?r=Admin/internshipPosition/delete&id=20
+HTTP_REFERER=http://localhost/internship/index.php?r=Admin/internshipPosition/view&id=20
+---
+2016/03/24 20:43:35 [error] [exception.Exception] exception 'Exception' with message 'Ακόμα δεν είναι ενεργοποιημένος ο λογαριασμός σας.' in C:\wamp\www\internship\protected\controllers\SiteController.php:167
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#1 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#2 C:\wamp\www\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#3 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#4 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('login')
+#5 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#6 C:\wamp\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#7 C:\wamp\www\internship\index.php(16): CApplication->run()
+#8 {main}
+REQUEST_URI=/internship/index.php?r=site/login
+HTTP_REFERER=http://localhost/internship/index.php?r=site/login
+---
+2016/03/24 20:45:16 [warning] [application] Failed to set unsafe attribute "father_name" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/03/24 20:45:16 [warning] [application] Failed to set unsafe attribute "mother_name" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/03/24 20:45:16 [warning] [application] Failed to set unsafe attribute "gender" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/03/24 20:45:16 [warning] [application] Failed to set unsafe attribute "birth_day" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/03/24 20:45:16 [warning] [application] Failed to set unsafe attribute "address" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/03/24 20:45:16 [warning] [application] Failed to set unsafe attribute "identity_number" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/03/24 20:45:16 [warning] [application] Failed to set unsafe attribute "afm" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/03/24 20:45:16 [warning] [application] Failed to set unsafe attribute "doy" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/03/24 20:45:16 [warning] [application] Failed to set unsafe attribute "amka" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/03/24 20:45:16 [warning] [application] Failed to set unsafe attribute "ama_ika" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/03/24 20:45:16 [warning] [application] Failed to set unsafe attribute "file_ika" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/03/24 20:45:16 [warning] [application] Failed to set unsafe attribute "department" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/03/24 20:45:16 [warning] [application] Failed to set unsafe attribute "year_in" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/03/24 20:45:16 [warning] [application] Failed to set unsafe attribute "file_grades" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/03/24 20:45:16 [warning] [application] Failed to set unsafe attribute "file_cv" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/03/24 20:45:16 [warning] [application] Failed to set unsafe attribute "IBAN" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/03/24 20:45:16 [warning] [application] Failed to set unsafe attribute "isNew" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/03/24 20:45:16 [warning] [application] Failed to set unsafe attribute "student_id" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/03/24 20:45:16 [warning] [application] Failed to set unsafe attribute "username" of "Student".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (72)
+in C:\wamp\www\internship\index.php (16)
+2016/03/24 20:45:16 [warning] [application] Failed to set unsafe attribute "password" of "Student".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (72)
+in C:\wamp\www\internship\index.php (16)
+2016/03/24 20:45:16 [warning] [application] Failed to set unsafe attribute "first_name" of "Student".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (72)
+in C:\wamp\www\internship\index.php (16)
+2016/03/24 20:45:16 [warning] [application] Failed to set unsafe attribute "last_name" of "Student".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (72)
+in C:\wamp\www\internship\index.php (16)
+2016/03/24 20:45:16 [warning] [application] Failed to set unsafe attribute "aem" of "Student".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (72)
+in C:\wamp\www\internship\index.php (16)
+2016/03/24 20:45:16 [warning] [application] Failed to set unsafe attribute "email" of "Student".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (72)
+in C:\wamp\www\internship\index.php (16)
+2016/03/24 20:45:16 [warning] [application] Failed to set unsafe attribute "telephone" of "Student".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (72)
+in C:\wamp\www\internship\index.php (16)
+2016/03/24 20:45:16 [warning] [application] Failed to set unsafe attribute "academicid" of "Student".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (72)
+in C:\wamp\www\internship\index.php (16)
+2016/03/24 20:45:16 [warning] [application] Failed to set unsafe attribute "activated" of "Student".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (72)
+in C:\wamp\www\internship\index.php (16)
+2016/03/24 20:45:16 [warning] [application] Failed to set unsafe attribute "isNew" of "Student".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (72)
+in C:\wamp\www\internship\index.php (16)
+2016/03/24 20:45:16 [warning] [application] Failed to set unsafe attribute "student_id" of "Student".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (72)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:18:05 [warning] [application] Failed to set unsafe attribute "id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (149)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:18:05 [warning] [application] Failed to set unsafe attribute "user_id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (149)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:18:05 [warning] [application] Failed to set unsafe attribute "id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:18:05 [warning] [application] Failed to set unsafe attribute "act_code" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:18:05 [warning] [application] Failed to set unsafe attribute "type" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:18:05 [warning] [application] Failed to set unsafe attribute "aem" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:18:05 [warning] [application] Failed to set unsafe attribute "academicid" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:18:05 [warning] [application] Failed to set unsafe attribute "status_data" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:27 [warning] [application] Failed to set unsafe attribute "id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (149)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:27 [warning] [application] Failed to set unsafe attribute "user_id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (149)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:27 [warning] [application] Failed to set unsafe attribute "id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:27 [warning] [application] Failed to set unsafe attribute "act_code" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:27 [warning] [application] Failed to set unsafe attribute "type" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:27 [warning] [application] Failed to set unsafe attribute "aem" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:27 [warning] [application] Failed to set unsafe attribute "academicid" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:27 [warning] [application] Failed to set unsafe attribute "status_data" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:39 [warning] [application] Failed to set unsafe attribute "id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (149)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:39 [warning] [application] Failed to set unsafe attribute "user_id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (149)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:39 [warning] [application] Failed to set unsafe attribute "id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:39 [warning] [application] Failed to set unsafe attribute "act_code" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:39 [warning] [application] Failed to set unsafe attribute "type" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:39 [warning] [application] Failed to set unsafe attribute "aem" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:39 [warning] [application] Failed to set unsafe attribute "academicid" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:39 [warning] [application] Failed to set unsafe attribute "status_data" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:39 [warning] [application] Failed to set unsafe attribute "username" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:39 [warning] [application] Failed to set unsafe attribute "password" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:39 [warning] [application] Failed to set unsafe attribute "first_name" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:39 [warning] [application] Failed to set unsafe attribute "last_name" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:39 [warning] [application] Failed to set unsafe attribute "email" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:39 [warning] [application] Failed to set unsafe attribute "telephone" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:39 [warning] [application] Failed to set unsafe attribute "activated" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:39 [warning] [application] Failed to set unsafe attribute "id" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:39 [warning] [application] Failed to set unsafe attribute "isNew" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:39 [warning] [application] Failed to set unsafe attribute "company_id" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:39 [warning] [application] Failed to set unsafe attribute "address" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:39 [warning] [application] Failed to set unsafe attribute "city" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:39 [warning] [application] Failed to set unsafe attribute "brand" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:39 [warning] [application] Failed to set unsafe attribute "description" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:39 [warning] [application] Failed to set unsafe attribute "afm" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:39 [warning] [application] Failed to set unsafe attribute "doy" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:39 [warning] [application] Failed to set unsafe attribute "tk" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:39 [warning] [application] Failed to set unsafe attribute "id" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:39 [warning] [application] Failed to set unsafe attribute "identity_number" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:39 [warning] [application] Failed to set unsafe attribute "isNew" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:39 [warning] [application] Failed to set unsafe attribute "company_id" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:43 [warning] [application] Failed to set unsafe attribute "id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (149)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:43 [warning] [application] Failed to set unsafe attribute "user_id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (149)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:43 [warning] [application] Failed to set unsafe attribute "id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:43 [warning] [application] Failed to set unsafe attribute "act_code" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:43 [warning] [application] Failed to set unsafe attribute "type" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:43 [warning] [application] Failed to set unsafe attribute "aem" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:43 [warning] [application] Failed to set unsafe attribute "academicid" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:20:43 [warning] [application] Failed to set unsafe attribute "status_data" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:21:34 [warning] [application] Failed to set unsafe attribute "id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (149)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:21:34 [warning] [application] Failed to set unsafe attribute "user_id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (149)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:21:34 [warning] [application] Failed to set unsafe attribute "id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:21:34 [warning] [application] Failed to set unsafe attribute "act_code" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:21:34 [warning] [application] Failed to set unsafe attribute "type" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:21:34 [warning] [application] Failed to set unsafe attribute "aem" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:21:34 [warning] [application] Failed to set unsafe attribute "academicid" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:21:34 [warning] [application] Failed to set unsafe attribute "status_data" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:21:34 [warning] [application] Failed to set unsafe attribute "username" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:21:34 [warning] [application] Failed to set unsafe attribute "password" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:21:34 [warning] [application] Failed to set unsafe attribute "first_name" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:21:34 [warning] [application] Failed to set unsafe attribute "last_name" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:21:34 [warning] [application] Failed to set unsafe attribute "email" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:21:34 [warning] [application] Failed to set unsafe attribute "telephone" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:21:34 [warning] [application] Failed to set unsafe attribute "activated" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:21:34 [warning] [application] Failed to set unsafe attribute "id" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:21:34 [warning] [application] Failed to set unsafe attribute "isNew" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:21:34 [warning] [application] Failed to set unsafe attribute "company_id" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:21:34 [warning] [application] Failed to set unsafe attribute "address" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:21:34 [warning] [application] Failed to set unsafe attribute "city" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:21:34 [warning] [application] Failed to set unsafe attribute "brand" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:21:34 [warning] [application] Failed to set unsafe attribute "description" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:21:34 [warning] [application] Failed to set unsafe attribute "afm" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:21:34 [warning] [application] Failed to set unsafe attribute "doy" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:21:34 [warning] [application] Failed to set unsafe attribute "tk" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:21:34 [warning] [application] Failed to set unsafe attribute "id" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:21:34 [warning] [application] Failed to set unsafe attribute "identity_number" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:21:34 [warning] [application] Failed to set unsafe attribute "isNew" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:21:34 [warning] [application] Failed to set unsafe attribute "company_id" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:06 [warning] [application] Failed to set unsafe attribute "id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (149)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:06 [warning] [application] Failed to set unsafe attribute "user_id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (149)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:06 [warning] [application] Failed to set unsafe attribute "id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:06 [warning] [application] Failed to set unsafe attribute "act_code" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:06 [warning] [application] Failed to set unsafe attribute "type" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:06 [warning] [application] Failed to set unsafe attribute "aem" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:06 [warning] [application] Failed to set unsafe attribute "academicid" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:06 [warning] [application] Failed to set unsafe attribute "status_data" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:18 [warning] [application] Failed to set unsafe attribute "id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (149)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:18 [warning] [application] Failed to set unsafe attribute "user_id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (149)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:18 [warning] [application] Failed to set unsafe attribute "id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:18 [warning] [application] Failed to set unsafe attribute "act_code" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:18 [warning] [application] Failed to set unsafe attribute "type" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:18 [warning] [application] Failed to set unsafe attribute "aem" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:18 [warning] [application] Failed to set unsafe attribute "academicid" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:18 [warning] [application] Failed to set unsafe attribute "status_data" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:21 [warning] [application] Failed to set unsafe attribute "id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (149)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:21 [warning] [application] Failed to set unsafe attribute "user_id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (149)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:21 [warning] [application] Failed to set unsafe attribute "id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:21 [warning] [application] Failed to set unsafe attribute "act_code" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:21 [warning] [application] Failed to set unsafe attribute "type" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:21 [warning] [application] Failed to set unsafe attribute "aem" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:21 [warning] [application] Failed to set unsafe attribute "academicid" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:21 [warning] [application] Failed to set unsafe attribute "status_data" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:43 [warning] [application] Failed to set unsafe attribute "id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (149)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:43 [warning] [application] Failed to set unsafe attribute "user_id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (149)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:43 [warning] [application] Failed to set unsafe attribute "id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:43 [warning] [application] Failed to set unsafe attribute "act_code" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:43 [warning] [application] Failed to set unsafe attribute "type" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:43 [warning] [application] Failed to set unsafe attribute "aem" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:43 [warning] [application] Failed to set unsafe attribute "academicid" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:43 [warning] [application] Failed to set unsafe attribute "status_data" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:57 [warning] [application] Failed to set unsafe attribute "id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (149)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:57 [warning] [application] Failed to set unsafe attribute "user_id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (149)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:57 [warning] [application] Failed to set unsafe attribute "id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:57 [warning] [application] Failed to set unsafe attribute "act_code" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:57 [warning] [application] Failed to set unsafe attribute "type" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:57 [warning] [application] Failed to set unsafe attribute "aem" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:57 [warning] [application] Failed to set unsafe attribute "academicid" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:57 [warning] [application] Failed to set unsafe attribute "status_data" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:57 [warning] [application] Failed to set unsafe attribute "username" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:57 [warning] [application] Failed to set unsafe attribute "password" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:57 [warning] [application] Failed to set unsafe attribute "first_name" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:57 [warning] [application] Failed to set unsafe attribute "last_name" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:57 [warning] [application] Failed to set unsafe attribute "email" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:57 [warning] [application] Failed to set unsafe attribute "telephone" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:57 [warning] [application] Failed to set unsafe attribute "activated" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:57 [warning] [application] Failed to set unsafe attribute "id" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:57 [warning] [application] Failed to set unsafe attribute "isNew" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:57 [warning] [application] Failed to set unsafe attribute "company_id" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:57 [warning] [application] Failed to set unsafe attribute "address" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:57 [warning] [application] Failed to set unsafe attribute "city" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:57 [warning] [application] Failed to set unsafe attribute "brand" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:57 [warning] [application] Failed to set unsafe attribute "description" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:57 [warning] [application] Failed to set unsafe attribute "afm" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:57 [warning] [application] Failed to set unsafe attribute "doy" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:57 [warning] [application] Failed to set unsafe attribute "tk" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:57 [warning] [application] Failed to set unsafe attribute "id" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:57 [warning] [application] Failed to set unsafe attribute "identity_number" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:57 [warning] [application] Failed to set unsafe attribute "isNew" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:22:57 [warning] [application] Failed to set unsafe attribute "company_id" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:16 [warning] [application] Failed to set unsafe attribute "id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (149)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:16 [warning] [application] Failed to set unsafe attribute "user_id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (149)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:16 [warning] [application] Failed to set unsafe attribute "id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:16 [warning] [application] Failed to set unsafe attribute "act_code" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:16 [warning] [application] Failed to set unsafe attribute "type" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:16 [warning] [application] Failed to set unsafe attribute "aem" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:16 [warning] [application] Failed to set unsafe attribute "academicid" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:16 [warning] [application] Failed to set unsafe attribute "status_data" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:28 [warning] [application] Failed to set unsafe attribute "id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (149)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:28 [warning] [application] Failed to set unsafe attribute "user_id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (149)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:28 [warning] [application] Failed to set unsafe attribute "id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:28 [warning] [application] Failed to set unsafe attribute "act_code" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:28 [warning] [application] Failed to set unsafe attribute "type" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:28 [warning] [application] Failed to set unsafe attribute "aem" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:28 [warning] [application] Failed to set unsafe attribute "academicid" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:28 [warning] [application] Failed to set unsafe attribute "status_data" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:28 [warning] [application] Failed to set unsafe attribute "username" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:28 [warning] [application] Failed to set unsafe attribute "password" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:28 [warning] [application] Failed to set unsafe attribute "first_name" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:28 [warning] [application] Failed to set unsafe attribute "last_name" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:28 [warning] [application] Failed to set unsafe attribute "email" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:28 [warning] [application] Failed to set unsafe attribute "telephone" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:28 [warning] [application] Failed to set unsafe attribute "activated" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:28 [warning] [application] Failed to set unsafe attribute "id" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:28 [warning] [application] Failed to set unsafe attribute "isNew" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:28 [warning] [application] Failed to set unsafe attribute "company_id" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:28 [warning] [application] Failed to set unsafe attribute "address" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:28 [warning] [application] Failed to set unsafe attribute "city" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:28 [warning] [application] Failed to set unsafe attribute "brand" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:28 [warning] [application] Failed to set unsafe attribute "description" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:28 [warning] [application] Failed to set unsafe attribute "afm" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:28 [warning] [application] Failed to set unsafe attribute "doy" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:28 [warning] [application] Failed to set unsafe attribute "tk" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:28 [warning] [application] Failed to set unsafe attribute "id" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:28 [warning] [application] Failed to set unsafe attribute "identity_number" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:28 [warning] [application] Failed to set unsafe attribute "isNew" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:23:28 [warning] [application] Failed to set unsafe attribute "company_id" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:24:28 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: could not find driver' in C:\wamp\www\yii\framework\db\CDbConnection.php:399
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\CDbConnection.php(347): CDbConnection->open()
+#1 C:\wamp\www\yii\framework\db\CDbConnection.php(325): CDbConnection->setActive(true)
+#2 C:\wamp\www\yii\framework\base\CModule.php(394): CDbConnection->init()
+#3 C:\wamp\www\yii\framework\base\CApplication.php(458): CModule->getComponent('db')
+#4 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(637): CApplication->getDb()
+#5 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(1433): CActiveRecord->getDbConnection()
+#6 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(1489): CActiveRecord->getTableAlias(true)
+#7 C:\wamp\www\internship\protected\components\Controller.php(28): CActiveRecord->findByPk('14')
+#8 C:\wamp\www\internship\protected\components\Controller.php(54): Controller::typeUser()
+#9 [internal function]: Controller::isUserAdmin(Object(CWebUser), Object(CAccessRule))
+#10 C:\wamp\www\yii\framework\base\CComponent.php(617): call_user_func_array(Array, Array)
+#11 C:\wamp\www\yii\framework\web\auth\CAccessControlFilter.php(392): CComponent->evaluateExpression(Array, Array)
+#12 C:\wamp\www\yii\framework\web\auth\CAccessControlFilter.php(288): CAccessRule->isExpressionMatched(Object(CWebUser))
+#13 C:\wamp\www\yii\framework\web\auth\CAccessControlFilter.php(138): CAccessRule->isUserAllowed(Object(CWebUser), Object(CompanyController), Object(CInlineAction), '::1', 'GET')
+#14 C:\wamp\www\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#15 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#16 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#17 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#18 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#19 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('view')
+#21 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Admin/company/v...')
+#22 C:\wamp\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#23 C:\wamp\www\internship\index.php(16): CApplication->run()
+#24 {main}
+REQUEST_URI=/internship/index.php?r=Admin/company/view&id=12
+HTTP_REFERER=http://localhost/internship/index.php?r=Admin/company/update&id=12
+---
+2016/04/05 20:25:15 [warning] [application] Failed to set unsafe attribute "id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (149)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:15 [warning] [application] Failed to set unsafe attribute "user_id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (149)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:15 [warning] [application] Failed to set unsafe attribute "id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:15 [warning] [application] Failed to set unsafe attribute "act_code" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:15 [warning] [application] Failed to set unsafe attribute "type" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:15 [warning] [application] Failed to set unsafe attribute "aem" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:15 [warning] [application] Failed to set unsafe attribute "academicid" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:15 [warning] [application] Failed to set unsafe attribute "status_data" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:29 [warning] [application] Failed to set unsafe attribute "id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (149)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:29 [warning] [application] Failed to set unsafe attribute "user_id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (149)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:29 [warning] [application] Failed to set unsafe attribute "id" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:29 [warning] [application] Failed to set unsafe attribute "act_code" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:29 [warning] [application] Failed to set unsafe attribute "type" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:29 [warning] [application] Failed to set unsafe attribute "aem" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:29 [warning] [application] Failed to set unsafe attribute "academicid" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:29 [warning] [application] Failed to set unsafe attribute "status_data" of "CompanyForm".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:29 [warning] [application] Failed to set unsafe attribute "username" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:29 [warning] [application] Failed to set unsafe attribute "password" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:29 [warning] [application] Failed to set unsafe attribute "first_name" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:29 [warning] [application] Failed to set unsafe attribute "last_name" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:29 [warning] [application] Failed to set unsafe attribute "email" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:29 [warning] [application] Failed to set unsafe attribute "telephone" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:29 [warning] [application] Failed to set unsafe attribute "activated" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:29 [warning] [application] Failed to set unsafe attribute "id" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:29 [warning] [application] Failed to set unsafe attribute "isNew" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:29 [warning] [application] Failed to set unsafe attribute "company_id" of "Company".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (162)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:29 [warning] [application] Failed to set unsafe attribute "address" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:29 [warning] [application] Failed to set unsafe attribute "city" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:29 [warning] [application] Failed to set unsafe attribute "brand" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:29 [warning] [application] Failed to set unsafe attribute "description" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:29 [warning] [application] Failed to set unsafe attribute "afm" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:29 [warning] [application] Failed to set unsafe attribute "doy" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:29 [warning] [application] Failed to set unsafe attribute "tk" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:29 [warning] [application] Failed to set unsafe attribute "id" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:29 [warning] [application] Failed to set unsafe attribute "identity_number" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:29 [warning] [application] Failed to set unsafe attribute "isNew" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/05 20:25:29 [warning] [application] Failed to set unsafe attribute "company_id" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\CompanyController.php (163)
+in C:\wamp\www\internship\index.php (16)
+2016/04/07 20:35:58 [error] [php] Undefined variable: r_sucess (C:\wamp\www\internship\protected\modules\Admin\controllers\InternshipPositionController.php:129)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#1 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): InternshipPositionController->runAction()
+#3 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#5 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): InternshipPositionController->filterAccessControl()
+#6 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#7 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\wamp\www\yii\framework\web\CController.php(265): InternshipPositionController->runActionWithFilters()
+#9 C:\wamp\www\yii\framework\web\CWebApplication.php(282): InternshipPositionController->run()
+#10 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#11 C:\wamp\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#12 C:\wamp\www\internship\index.php(16): CWebApplication->run()
+REQUEST_URI=/internship/index.php?r=Admin/InternshipPosition/award&id=21&sid=9&rid=32
+in C:\wamp\www\internship\protected\modules\Admin\controllers\InternshipPositionController.php (129)
+in C:\wamp\www\internship\index.php (16)
+2016/04/07 20:41:45 [error] [exception.CException] exception 'CException' with message 'Property "InternshipPosition.start_date" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(145): CComponent->__get('start_date')
+#1 C:\wamp\www\internship\protected\modules\Admin\views\internshipPosition\award.php(19): CActiveRecord->__get('start_date')
+#2 C:\wamp\www\yii\framework\web\CBaseController.php(126): require('C:\\wamp\\www\\int...')
+#3 C:\wamp\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp\\www\\int...', Array, true)
+#4 C:\wamp\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp\\www\\int...', Array, true)
+#5 C:\wamp\www\yii\framework\web\CController.php(782): CController->renderPartial('award', Array, true)
+#6 C:\wamp\www\internship\protected\modules\Admin\controllers\InternshipPositionController.php(143): CController->render('award', Array)
+#7 [internal function]: InternshipPositionController->actionAward('21', '9', '32')
+#8 C:\wamp\www\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(InternshipPositionController), Array)
+#9 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(InternshipPositionController), Object(ReflectionMethod), Array)
+#10 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('award')
+#19 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Admin/Internshi...')
+#20 C:\wamp\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#21 C:\wamp\www\internship\index.php(16): CApplication->run()
+#22 {main}
+REQUEST_URI=/internship/index.php?r=Admin/InternshipPosition/award&id=21&sid=9&rid=32
+HTTP_REFERER=http://localhost/internship/index.php?r=Admin/InternshipPosition/award&id=21&sid=9&rid=32
+---
+2016/04/07 21:16:06 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42S22]: Column not found: 1054 Champ 'requestsInternships.status' inconnu dans where clause. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`id`) FROM `internship_position` `t`  INNER JOIN `request_internship` `requestInternships` ON (`requestInternships`.`internship_position_id`=`t`.`id`) WHERE (t.status=3) AND (requestsInternships.status=0).
+in C:\wamp\www\internship\protected\modules\Admin\views\requestInternship\viewRequests.php (20)
+in C:\wamp\www\internship\protected\modules\Admin\controllers\RequestInternshipController.php (77)
+in C:\wamp\www\internship\index.php (16)
+2016/04/07 21:16:06 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Champ 'requestsInternships.status' inconnu dans where clause. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`id`) FROM `internship_position` `t`  INNER JOIN `request_internship` `requestInternships` ON (`requestInternships`.`internship_position_id`=`t`.`id`) WHERE (t.status=3) AND (requestsInternships.status=0)' in C:\wamp\www\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\wamp\www\yii\framework\db\ar\CActiveFinder.php(764): CDbCommand->queryScalar()
+#2 C:\wamp\www\yii\framework\db\ar\CActiveFinder.php(151): CJoinElement->count(Object(CDbCriteria))
+#3 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(1610): CActiveFinder->count(Object(CDbCriteria))
+#4 C:\wamp\www\yii\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 C:\wamp\www\yii\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 C:\wamp\www\yii\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 C:\wamp\www\yii\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 C:\wamp\www\yii\framework\zii\widgets\CBaseListView.php(125): CDataProvider->getData()
+#9 C:\wamp\www\yii\framework\zii\widgets\CListView.php(211): CBaseListView->init()
+#10 C:\wamp\www\yii\framework\web\CBaseController.php(147): CListView->init()
+#11 C:\wamp\www\yii\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 C:\wamp\www\internship\protected\modules\Admin\views\requestInternship\viewRequests.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 C:\wamp\www\yii\framework\web\CBaseController.php(126): require('C:\\wamp\\www\\int...')
+#14 C:\wamp\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp\\www\\int...', Array, true)
+#15 C:\wamp\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp\\www\\int...', Array, true)
+#16 C:\wamp\www\yii\framework\web\CController.php(782): CController->renderPartial('viewRequests', Array, true)
+#17 C:\wamp\www\internship\protected\modules\Admin\controllers\RequestInternshipController.php(77): CController->render('viewRequests', Array)
+#18 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): RequestInternshipController->actionViewrequests()
+#19 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#20 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#22 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#26 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('viewRequests')
+#28 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Admin/requestIn...')
+#29 C:\wamp\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#30 C:\wamp\www\internship\index.php(16): CApplication->run()
+#31 {main}
+REQUEST_URI=/internship/index.php?r=Admin/requestInternship/viewRequests
+HTTP_REFERER=http://localhost/internship/index.php?r=Admin/internshipPosition/view&id=21
+---
+2016/04/07 21:18:25 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42S22]: Column not found: 1054 Champ 'request_internship.status' inconnu dans where clause. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`id`) FROM `internship_position` `t`  INNER JOIN `request_internship` `requestInternships` ON (`requestInternships`.`internship_position_id`=`t`.`id`) WHERE (t.status=3) AND (request_internship.status=0).
+in C:\wamp\www\internship\protected\modules\Admin\views\requestInternship\viewRequests.php (20)
+in C:\wamp\www\internship\protected\modules\Admin\controllers\RequestInternshipController.php (77)
+in C:\wamp\www\internship\index.php (16)
+2016/04/07 21:18:25 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Champ 'request_internship.status' inconnu dans where clause. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`id`) FROM `internship_position` `t`  INNER JOIN `request_internship` `requestInternships` ON (`requestInternships`.`internship_position_id`=`t`.`id`) WHERE (t.status=3) AND (request_internship.status=0)' in C:\wamp\www\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\wamp\www\yii\framework\db\ar\CActiveFinder.php(764): CDbCommand->queryScalar()
+#2 C:\wamp\www\yii\framework\db\ar\CActiveFinder.php(151): CJoinElement->count(Object(CDbCriteria))
+#3 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(1610): CActiveFinder->count(Object(CDbCriteria))
+#4 C:\wamp\www\yii\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 C:\wamp\www\yii\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 C:\wamp\www\yii\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 C:\wamp\www\yii\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 C:\wamp\www\yii\framework\zii\widgets\CBaseListView.php(125): CDataProvider->getData()
+#9 C:\wamp\www\yii\framework\zii\widgets\CListView.php(211): CBaseListView->init()
+#10 C:\wamp\www\yii\framework\web\CBaseController.php(147): CListView->init()
+#11 C:\wamp\www\yii\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 C:\wamp\www\internship\protected\modules\Admin\views\requestInternship\viewRequests.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 C:\wamp\www\yii\framework\web\CBaseController.php(126): require('C:\\wamp\\www\\int...')
+#14 C:\wamp\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp\\www\\int...', Array, true)
+#15 C:\wamp\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp\\www\\int...', Array, true)
+#16 C:\wamp\www\yii\framework\web\CController.php(782): CController->renderPartial('viewRequests', Array, true)
+#17 C:\wamp\www\internship\protected\modules\Admin\controllers\RequestInternshipController.php(77): CController->render('viewRequests', Array)
+#18 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): RequestInternshipController->actionViewrequests()
+#19 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#20 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#22 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#26 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('viewRequests')
+#28 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Admin/requestIn...')
+#29 C:\wamp\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#30 C:\wamp\www\internship\index.php(16): CApplication->run()
+#31 {main}
+REQUEST_URI=/internship/index.php?r=Admin/requestInternship/viewRequests
+HTTP_REFERER=http://localhost/internship/index.php?r=Admin/internshipPosition/view&id=21
+---
+2016/04/07 21:19:14 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[23000]: Integrity constraint violation: 1052 Champ: 'status' dans where clause est ambigu. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`id`) FROM `internship_position` `t`  INNER JOIN `request_internship` `requestInternships` ON (`requestInternships`.`internship_position_id`=`t`.`id`) WHERE (t.status=3) AND (status=0).
+in C:\wamp\www\internship\protected\modules\Admin\views\requestInternship\viewRequests.php (20)
+in C:\wamp\www\internship\protected\modules\Admin\controllers\RequestInternshipController.php (77)
+in C:\wamp\www\internship\index.php (16)
+2016/04/07 21:19:14 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1052 Champ: 'status' dans where clause est ambigu. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`id`) FROM `internship_position` `t`  INNER JOIN `request_internship` `requestInternships` ON (`requestInternships`.`internship_position_id`=`t`.`id`) WHERE (t.status=3) AND (status=0)' in C:\wamp\www\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\wamp\www\yii\framework\db\ar\CActiveFinder.php(764): CDbCommand->queryScalar()
+#2 C:\wamp\www\yii\framework\db\ar\CActiveFinder.php(151): CJoinElement->count(Object(CDbCriteria))
+#3 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(1610): CActiveFinder->count(Object(CDbCriteria))
+#4 C:\wamp\www\yii\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 C:\wamp\www\yii\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 C:\wamp\www\yii\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 C:\wamp\www\yii\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 C:\wamp\www\yii\framework\zii\widgets\CBaseListView.php(125): CDataProvider->getData()
+#9 C:\wamp\www\yii\framework\zii\widgets\CListView.php(211): CBaseListView->init()
+#10 C:\wamp\www\yii\framework\web\CBaseController.php(147): CListView->init()
+#11 C:\wamp\www\yii\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 C:\wamp\www\internship\protected\modules\Admin\views\requestInternship\viewRequests.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 C:\wamp\www\yii\framework\web\CBaseController.php(126): require('C:\\wamp\\www\\int...')
+#14 C:\wamp\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp\\www\\int...', Array, true)
+#15 C:\wamp\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp\\www\\int...', Array, true)
+#16 C:\wamp\www\yii\framework\web\CController.php(782): CController->renderPartial('viewRequests', Array, true)
+#17 C:\wamp\www\internship\protected\modules\Admin\controllers\RequestInternshipController.php(77): CController->render('viewRequests', Array)
+#18 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): RequestInternshipController->actionViewrequests()
+#19 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#20 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#22 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#26 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('viewRequests')
+#28 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Admin/requestIn...')
+#29 C:\wamp\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#30 C:\wamp\www\internship\index.php(16): CApplication->run()
+#31 {main}
+REQUEST_URI=/internship/index.php?r=Admin/requestInternship/viewRequests
+HTTP_REFERER=http://localhost/internship/index.php?r=Admin/internshipPosition/view&id=21
+---
+2016/04/07 21:21:41 [error] [system.db.CDbCommand] CDbCommand::fetchColumn() failed: SQLSTATE[42S22]: Column not found: 1054 Champ 'requestInternships.statuss' inconnu dans where clause. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`id`) FROM `internship_position` `t`  INNER JOIN `request_internship` `requestInternships` ON (`requestInternships`.`internship_position_id`=`t`.`id`) WHERE (t.status=3) AND (requestInternships.statuss=0).
+in C:\wamp\www\internship\protected\modules\Admin\views\requestInternship\viewRequests.php (20)
+in C:\wamp\www\internship\protected\modules\Admin\controllers\RequestInternshipController.php (77)
+in C:\wamp\www\internship\index.php (16)
+2016/04/07 21:21:41 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Champ 'requestInternships.statuss' inconnu dans where clause. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`id`) FROM `internship_position` `t`  INNER JOIN `request_internship` `requestInternships` ON (`requestInternships`.`internship_position_id`=`t`.`id`) WHERE (t.status=3) AND (requestInternships.statuss=0)' in C:\wamp\www\yii\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\wamp\www\yii\framework\db\ar\CActiveFinder.php(764): CDbCommand->queryScalar()
+#2 C:\wamp\www\yii\framework\db\ar\CActiveFinder.php(151): CJoinElement->count(Object(CDbCriteria))
+#3 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(1610): CActiveFinder->count(Object(CDbCriteria))
+#4 C:\wamp\www\yii\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 C:\wamp\www\yii\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 C:\wamp\www\yii\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 C:\wamp\www\yii\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 C:\wamp\www\yii\framework\zii\widgets\CBaseListView.php(125): CDataProvider->getData()
+#9 C:\wamp\www\yii\framework\zii\widgets\CListView.php(211): CBaseListView->init()
+#10 C:\wamp\www\yii\framework\web\CBaseController.php(147): CListView->init()
+#11 C:\wamp\www\yii\framework\web\CBaseController.php(180): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#12 C:\wamp\www\internship\protected\modules\Admin\views\requestInternship\viewRequests.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#13 C:\wamp\www\yii\framework\web\CBaseController.php(126): require('C:\\wamp\\www\\int...')
+#14 C:\wamp\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp\\www\\int...', Array, true)
+#15 C:\wamp\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp\\www\\int...', Array, true)
+#16 C:\wamp\www\yii\framework\web\CController.php(782): CController->renderPartial('viewRequests', Array, true)
+#17 C:\wamp\www\internship\protected\modules\Admin\controllers\RequestInternshipController.php(77): CController->render('viewRequests', Array)
+#18 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): RequestInternshipController->actionViewrequests()
+#19 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#20 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#21 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#22 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#23 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#24 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#25 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#26 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#27 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('viewRequests')
+#28 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Admin/requestIn...')
+#29 C:\wamp\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#30 C:\wamp\www\internship\index.php(16): CApplication->run()
+#31 {main}
+REQUEST_URI=/internship/index.php?r=Admin/requestInternship/viewRequests
+HTTP_REFERER=http://localhost/internship/index.php?r=Admin/requestInternship/viewRequests
+---
+2016/04/08 14:29:20 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`internship`.`request_internship`, CONSTRAINT `fk_request_intership_student1` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `student` WHERE `student`.`id`=9.
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (150)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:29:20 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`internship`.`request_internship`, CONSTRAINT `fk_request_intership_student1` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION). The SQL statement executed was: DELETE FROM `student` WHERE `student`.`id`=9' in C:\wamp\www\yii\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(1807): CDbCommand->execute()
+#1 C:\wamp\www\yii\framework\db\ar\CActiveRecord.php(1227): CActiveRecord->deleteByPk('9')
+#2 C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php(150): CActiveRecord->delete()
+#3 [internal function]: StudentController->actionDelete('9')
+#4 C:\wamp\www\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(StudentController), Array)
+#5 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(StudentController), Object(ReflectionMethod), Array)
+#6 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#7 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#8 C:\wamp\www\yii\framework\web\CController.php(1116): CFilterChain->run()
+#9 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#10 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('delete')
+#18 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Admin/student/d...')
+#19 C:\wamp\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#20 C:\wamp\www\internship\index.php(16): CApplication->run()
+#21 {main}
+REQUEST_URI=/internship/index.php?r=Admin/student/delete&id=9
+HTTP_REFERER=http://localhost/internship/index.php?r=Admin/student/view&id=9
+---
+2016/04/08 14:31:10 [warning] [application] Failed to set unsafe attribute "father_name" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:31:10 [warning] [application] Failed to set unsafe attribute "mother_name" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:31:10 [warning] [application] Failed to set unsafe attribute "gender" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:31:10 [warning] [application] Failed to set unsafe attribute "birth_day" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:31:10 [warning] [application] Failed to set unsafe attribute "address" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:31:10 [warning] [application] Failed to set unsafe attribute "identity_number" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:31:10 [warning] [application] Failed to set unsafe attribute "afm" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:31:10 [warning] [application] Failed to set unsafe attribute "doy" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:31:10 [warning] [application] Failed to set unsafe attribute "amka" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:31:10 [warning] [application] Failed to set unsafe attribute "ama_ika" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:31:10 [warning] [application] Failed to set unsafe attribute "file_ika" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:31:10 [warning] [application] Failed to set unsafe attribute "department" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:31:10 [warning] [application] Failed to set unsafe attribute "year_in" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:31:10 [warning] [application] Failed to set unsafe attribute "file_grades" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:31:10 [warning] [application] Failed to set unsafe attribute "file_cv" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:31:10 [warning] [application] Failed to set unsafe attribute "IBAN" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:31:10 [warning] [application] Failed to set unsafe attribute "isNew" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:31:10 [warning] [application] Failed to set unsafe attribute "student_id" of "Users".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (70)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:31:10 [warning] [application] Failed to set unsafe attribute "username" of "Student".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (72)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:31:10 [warning] [application] Failed to set unsafe attribute "password" of "Student".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (72)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:31:10 [warning] [application] Failed to set unsafe attribute "first_name" of "Student".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (72)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:31:10 [warning] [application] Failed to set unsafe attribute "last_name" of "Student".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (72)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:31:10 [warning] [application] Failed to set unsafe attribute "aem" of "Student".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (72)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:31:10 [warning] [application] Failed to set unsafe attribute "email" of "Student".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (72)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:31:10 [warning] [application] Failed to set unsafe attribute "telephone" of "Student".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (72)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:31:10 [warning] [application] Failed to set unsafe attribute "academicid" of "Student".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (72)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:31:10 [warning] [application] Failed to set unsafe attribute "activated" of "Student".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (72)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:31:10 [warning] [application] Failed to set unsafe attribute "isNew" of "Student".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (72)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:31:10 [warning] [application] Failed to set unsafe attribute "student_id" of "Student".
+in C:\wamp\www\internship\protected\modules\Admin\controllers\StudentController.php (72)
+in C:\wamp\www\internship\index.php (16)
+2016/04/08 14:40:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Δεν μπορείτε να κάνετε παραπάνω από τρεις αιτήσεις' in C:\wamp\www\internship\protected\modules\StudentAdmin\controllers\RequestInternshipController.php:82
+Stack trace:
+#0 [internal function]: RequestInternshipController->actionNewRequest('21', '58')
+#1 C:\wamp\www\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(RequestInternshipController), Array)
+#2 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(RequestInternshipController), Object(ReflectionMethod), Array)
+#3 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('NewRequest')
+#12 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('StudentAdmin/Re...')
+#13 C:\wamp\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#14 C:\wamp\www\internship\index.php(16): CApplication->run()
+#15 {main}
+REQUEST_URI=/internship/index.php?r=StudentAdmin/RequestInternship/NewRequest&iid=21&uid=58
+HTTP_REFERER=http://localhost/internship/index.php?r=StudentAdmin/internshipPosition/view&id=21
+---
+2016/04/08 19:53:58 [error] [php] Use of undefined constant flag_time - assumed 'flag_time' (C:\wamp\www\internship\protected\modules\StudentAdmin\views\internshipPosition\_form.php:113)
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CController.php(869): InternshipPositionController->renderFile()
+#1 C:\wamp\www\internship\protected\modules\StudentAdmin\views\internshipPosition\update.php(21): InternshipPositionController->renderPartial()
+#2 C:\wamp\www\yii\framework\web\CBaseController.php(126): require()
+#3 C:\wamp\www\yii\framework\web\CBaseController.php(95): InternshipPositionController->renderInternal()
+#4 C:\wamp\www\yii\framework\web\CController.php(869): InternshipPositionController->renderFile()
+#5 C:\wamp\www\yii\framework\web\CController.php(782): InternshipPositionController->renderPartial()
+#6 C:\wamp\www\internship\protected\modules\StudentAdmin\controllers\InternshipPositionController.php(107): InternshipPositionController->render()
+#7 unknown(0): InternshipPositionController->actionUpdate()
+#8 C:\wamp\www\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#9 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#10 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#11 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): InternshipPositionController->runAction()
+#12 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#14 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): InternshipPositionController->filterAccessControl()
+#15 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#16 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\wamp\www\yii\framework\web\CController.php(265): InternshipPositionController->runActionWithFilters()
+#18 C:\wamp\www\yii\framework\web\CWebApplication.php(282): InternshipPositionController->run()
+#19 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#20 C:\wamp\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#21 C:\wamp\www\internship\index.php(16): CWebApplication->run()
+REQUEST_URI=/internship/index.php?r=StudentAdmin/internshipPosition/update&id=19
+in C:\wamp\www\internship\protected\modules\StudentAdmin\views\internshipPosition\_form.php (113)
+in C:\wamp\www\internship\protected\modules\StudentAdmin\views\internshipPosition\update.php (21)
+in C:\wamp\www\internship\protected\modules\StudentAdmin\controllers\InternshipPositionController.php (107)
+2016/04/09 12:07:59 [error] [php] Trying to get property of non-object (C:\wamp\www\internship\protected\components\Controller.php:29)
+Stack trace:
+#0 C:\wamp\www\yii\framework\base\CComponent.php(617): call_user_func_array()
+#1 C:\wamp\www\yii\framework\web\auth\CAccessControlFilter.php(392): CAccessRule->evaluateExpression()
+#2 C:\wamp\www\yii\framework\web\auth\CAccessControlFilter.php(288): CAccessRule->isExpressionMatched()
+#3 C:\wamp\www\yii\framework\web\auth\CAccessControlFilter.php(138): CAccessRule->isUserAllowed()
+#4 C:\wamp\www\yii\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter()
+#5 C:\wamp\www\yii\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#6 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): InternshipPositionController->filterAccessControl()
+#7 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#8 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#9 C:\wamp\www\yii\framework\web\CController.php(265): InternshipPositionController->runActionWithFilters()
+#10 C:\wamp\www\yii\framework\web\CWebApplication.php(282): InternshipPositionController->run()
+#11 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\wamp\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#13 C:\wamp\www\internship\index.php(16): CWebApplication->run()
+REQUEST_URI=/internship/index.php?r=ProfessorAdmin/internshipPosition/update&id=20
+in C:\wamp\www\internship\protected\components\Controller.php (29)
+in C:\wamp\www\internship\protected\components\Controller.php (40)
+in C:\wamp\www\internship\index.php (16)
+2016/04/09 12:15:25 [error] [exception.Exception] exception 'Exception' with message 'Ακόμα δεν είναι ενεργοποιημένος ο λογαριασμός σας.' in C:\wamp\www\internship\protected\controllers\SiteController.php:167
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#1 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#2 C:\wamp\www\yii\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#3 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#4 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('login')
+#5 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#6 C:\wamp\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#7 C:\wamp\www\internship\index.php(16): CApplication->run()
+#8 {main}
+REQUEST_URI=/internship/index.php?r=site/login
+HTTP_REFERER=http://localhost/internship/index.php?r=site/login
+---
+2016/04/09 12:42:18 [error] [exception.CException] exception 'CException' with message 'Property "TbGridView.condition" is not defined.' in C:\wamp\www\yii\framework\base\CComponent.php:173
+Stack trace:
+#0 C:\wamp\www\yii\framework\web\CWidgetFactory.php(161): CComponent->__set('condition', 2)
+#1 C:\wamp\www\yii\framework\web\CBaseController.php(146): CWidgetFactory->createWidget(Object(InternshipPositionController), 'booster.widgets...', Array)
+#2 C:\wamp\www\yii\framework\web\CBaseController.php(180): CBaseController->createWidget('booster.widgets...', Array)
+#3 C:\wamp\www\internship\protected\modules\Admin\views\internshipPosition\history.php(88): CBaseController->widget('booster.widgets...', Array)
+#4 C:\wamp\www\yii\framework\web\CBaseController.php(126): require('C:\\wamp\\www\\int...')
+#5 C:\wamp\www\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\wamp\\www\\int...', Array, true)
+#6 C:\wamp\www\yii\framework\web\CController.php(869): CBaseController->renderFile('C:\\wamp\\www\\int...', Array, true)
+#7 C:\wamp\www\yii\framework\web\CController.php(782): CController->renderPartial('history', Array, true)
+#8 C:\wamp\www\internship\protected\modules\Admin\controllers\InternshipPositionController.php(190): CController->render('history', Array)
+#9 C:\wamp\www\yii\framework\web\actions\CInlineAction.php(49): InternshipPositionController->actionHistory()
+#10 C:\wamp\www\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 C:\wamp\www\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#13 C:\wamp\www\yii\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 C:\wamp\www\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 C:\wamp\www\yii\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 C:\wamp\www\yii\framework\web\CController.php(291): CFilterChain->run()
+#17 C:\wamp\www\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 C:\wamp\www\yii\framework\web\CWebApplication.php(282): CController->run('history')
+#19 C:\wamp\www\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('Admin/internshi...')
+#20 C:\wamp\www\yii\framework\base\CApplication.php(184): CWebApplication->processRequest()
+#21 C:\wamp\www\internship\index.php(16): CApplication->run()
+#22 {main}
+REQUEST_URI=/internship/index.php?r=Admin/internshipPosition/history
+HTTP_REFERER=http://localhost/internship/index.php?r=Admin/internshipPosition/index
+---

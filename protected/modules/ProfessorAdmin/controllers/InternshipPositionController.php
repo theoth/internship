@@ -104,6 +104,12 @@ class InternshipPositionController extends Controller {
             'model' => $model,
         ));
     }
+    
+    public function end_internship($id) {
+        $model = $this->loadModel($id);
+        $model->status = 2;
+        $model->save();
+    }
 
     /**
      * Updates a particular model.

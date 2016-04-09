@@ -5,8 +5,8 @@ return array(
 	//'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
 	// uncomment the following lines to use a MySQL database
 	
-	'connectionString' => 'mysql:unix_socket=/zstorage/home/ictest00313/mysql/run/mysql.sock;dbname=internship',
-		//'connectionString' => 'mysql:host=zstorage/home/ictest00313/mysql/run/mysql.sock;dbname=internship',
+	//'connectionString' => 'mysql:unix_socket=/zstorage/home/ictest00313/mysql/run/mysql.sock;dbname=internship',
+		'connectionString' => 'mysql:host=127.0.0.1;dbname=internship',
 
 	'emulatePrepare' => true,
 	'username' => 'root',
