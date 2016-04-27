@@ -4,14 +4,14 @@ body
 	padding: 0;
 	color: #555;
 	font: normal 10pt Arial,Helvetica,sans-serif;
-	background: #EFEFEF;
+	background: #fbf9f6;
 }
 
 #page
 {
 	margin-top: 5px;
 	margin-bottom: 5px;
-	background: white;
+	background: #f9fafb;
 	border: 0.5px solid #428bca;
 }
 
@@ -115,9 +115,14 @@ div.form .rememberMe label
 
 div.view
 {
+        
 	padding: 10px;
 	margin: 10px 0;
-	border: 2px solid #428bca;
+	border: 1px solid #dadadb;
+        background:white;
+        -moz-box-shadow: 0 0 2px 2px #888;
+    -webkit-box-shadow: 0 0 2px 2px #888;
+    box-shadow: 0 0 2px 2px #F3EEEE;
 }
 
 div.breadcrumbs
@@ -211,4 +216,37 @@ div.search-form
 .operations li a:hover
 {
 	background: #80CFFF;
+}
+
+
+#rectangle {
+    //border-radius: 25px;
+    border : 1px solid #dadadb;
+    background: white;
+    padding: 20px;
+    width: 300px;
+    height: 150px;
+    position : relative;
+    float: right;
+    display: inline-block;
+    -moz-box-shadow: 0 0 2px 2px #888;
+    -webkit-box-shadow: 0 0 2px 2px #888;
+    box-shadow: 0 0 2px 2px #F3EEEE;
+    margin-top: 29px;
+    //box-shadow: 2px 2px 0.5px #888888;
+}
+
+#listPosition {
+    float: left;
+    width: 60%
+}
+
+.fa{
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin-left: 20px;
 }

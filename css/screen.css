@@ -60,7 +60,13 @@ dl dt {font-weight:bold;}
 dd {margin-left:1.5em;}
 table {margin-bottom:1.4em;width:100%;}
 th {font-weight:bold;}
-thead th {background:#428bca;}
+thead th {
+     border : 1px solid #dadadb;
+    background: white;
+    -moz-box-shadow: 0 0 2px 2px #888;
+    -webkit-box-shadow: 0 0 2px 2px #888;
+    box-shadow: 0 0 2px 2px #F3EEEE;
+}
 th, td, caption {padding:4px 10px 4px 5px;}
 tfoot {font-style:italic;}
 caption {background:#eee;}

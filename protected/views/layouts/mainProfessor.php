@@ -97,6 +97,8 @@
                             array('label' => 'αρχική σελίδα', 'url' => array('/ProfessorAdmin/site'), 'active' => true),
 
                             array('label' => 'Οι θέσεις μου πρακτικής άσκησης', 'url' => array('/ProfessorAdmin/internshipPosition')),
+                            
+                            array('label' => 'Ιστορικό', 'url' => array('/ProfessorAdmin/internshipPosition/history')),
 
                             array('label' => 'Σύνδεση', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
 

@@ -42,7 +42,7 @@
                         'type' => 'navbar',
                         
                         'items' => array(
-                            array('label'=>'Τελευταίες δημοσιεύσεις', 'url'=>array('/Admin/site')),
+                            array('label'=>'Σύνοψη', 'url'=>array('/Admin/site')),
 				array('label'=>'Φοιτητές', 'url'=>array('/Admin/student')),
                                 array('label'=>'Καθηγητές', 'url'=>array('/Admin/professor')),
                                 array('label'=>'Εταιρείες', 'url'=>array('/Admin/company')),

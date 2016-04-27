@@ -22,16 +22,23 @@ $Students=Student::GetList();
 
     <br>
     <br>
-
+    
+    <?php// var_dump($model)?>
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
         
                 <?php //echo $form->labelEx($model,'period'); ?>
-		<?php echo $form->dropDownListGroup($model,'period',array('widgetOptions' => array('data' => array( InternshipPosition::periodList())))); ?>
+		<?php echo $form->dropDownListGroup($model,'period',array('widgetOptions' => array('data' => array(InternshipPosition::periodList())))); ?>
 		<?php //echo $form->error($model,'period'); ?>
             
         
+    </div>
+    
+    <div class="row">
+        <?php //echo $form->labelEx($model, 'department'); ?>
+        <?php echo $form->dropDownListGroup($model, 'department', array('widgetOptions' => array('data' => array(Utils::departmentsList(), array('empty' => '-'))))); ?>
+        <?php //echo $form->error($model, 'department'); ?>
     </div>
 
 	<div class="row">

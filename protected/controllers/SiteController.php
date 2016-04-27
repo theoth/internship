@@ -5,10 +5,18 @@ class SiteController extends Controller {
     /**
      * Declares class-based actions.
      */
-    
-    public $layout='//layouts/main';
-    
-    
+    public $layout = '//layouts/main';
+
+    public function actionConLoginUowm() {
+
+       $this->render('conLoginUowm');
+        
+    }
+
+    public function actionLoginUowm() {
+        $this->render('loginUowm');
+    }
+
     public function actions() {
         return array(
             // captcha action renders the CAPTCHA image displayed on the contact page
@@ -28,7 +36,6 @@ class SiteController extends Controller {
      * This is the default 'index' action that is invoked
      * when an action is not explicitly requested by users.
      */
-    
     public function actionViewInternshipPosition($id) {
         $in = InternshipPosition::model()->findByPk($id);
         if (!$in)
@@ -38,14 +45,14 @@ class SiteController extends Controller {
             'model' => $in,
         ));
     }
-    
+
     public function actionIndex() {
 
-        $c=new CDbCriteria;
-        $c->compare('published',1);
-        
+        $c = new CDbCriteria;
+        $c->compare('published', 1);
+
         $dataProvider = new CActiveDataProvider('InternshipPosition', array(
-            'criteria'=>$c,
+            'criteria' => $c,
             'sort' => array(
                 'defaultOrder' => 'created DESC',
             ),
@@ -58,10 +65,10 @@ class SiteController extends Controller {
         // using the default layout 'protected/views/layouts/main.php'
         $this->render('index', array('dataProvider' => $dataProvider));
     }
-    
+
     public function actionDashboardError() {
 
-       
+
 
         // renders the view file 'protected/views/site/index.php'
         // using the default layout 'protected/views/layouts/main.php'
@@ -121,53 +128,49 @@ class SiteController extends Controller {
             // validate user input and redirect to the previous page if valid
             if ($model->validate() && $model->login()) {
                 $u = Users::model()->findByPk(Yii::app()->user->id);
-                if ($u->activated==1){
-                if ($u->type == 2)
-                    $this->redirect(array('CompanyAdmin/site'));
+                if ($u->activated == 1) {
+                    if ($u->type == 2)
+                        $this->redirect(array('CompanyAdmin/site'));
 
 
-                if ($u->type == 0) {
-                    $this->redirect(array('StudentAdmin/site'));
-                }
+                    if ($u->type == 0) {
+                        $this->redirect(array('StudentAdmin/site'));
+                    }
 
-                if ($u->type == 1) {
-                    $this->redirect(array('ProfessorAdmin/site'));
-                }
-                
-                if ($u->type == 3) {
-                    $this->redirect(array('Admin/site'));
-                }
-                
-                if ($u->type == 4) {
-                    $this->redirect(array('icteAdmin/site'));
-                }
-                
-                if ($u->type == 5) {
-                    $this->redirect(array('mechAdmin/site'));
-                }
-                
-                if ($u->type == 6) {
-                    $this->redirect(array('envengAdmin/site'));
-                }
-                
-                if ($u->type == 7) {
-                    $this->redirect(array('eledAdmin/site'));
-                }
-                
-                if ($u->type == 8) {
-                    $this->redirect(array('nuredAdmin/site'));
-                }
-                
-                if ($u->type == 9) {
-                    $this->redirect(array('eetfAdmin/site'));
-                }
-                }
-            
-            else {
+                    if ($u->type == 1) {
+                        $this->redirect(array('ProfessorAdmin/site'));
+                    }
+
+                    if ($u->type == 3) {
+                        $this->redirect(array('Admin/site'));
+                    }
+
+                    if ($u->type == 4) {
+                        $this->redirect(array('icteAdmin/site'));
+                    }
+
+                    if ($u->type == 5) {
+                        $this->redirect(array('mechAdmin/site'));
+                    }
+
+                    if ($u->type == 6) {
+                        $this->redirect(array('envengAdmin/site'));
+                    }
+
+                    if ($u->type == 7) {
+                        $this->redirect(array('eledAdmin/site'));
+                    }
+
+                    if ($u->type == 8) {
+                        $this->redirect(array('nuredAdmin/site'));
+                    }
+
+                    if ($u->type == 9) {
+                        $this->redirect(array('eetfAdmin/site'));
+                    }
+                } else {
                     throw new Exception('Ακόμα δεν είναι ενεργοποιημένος ο λογαριασμός σας.');
-            }
-            
-                
+                }
             }
             //$this->redirect(Yii::app()->user->returnUrl);
         }
@@ -192,12 +195,11 @@ class SiteController extends Controller {
         ));
     }
 
-    
     public function actionnewAccountCompany($confirm = null) {
         if (!Yii::app()->user->isGuest) {
             $this->redirect(array('/'));
         }
-        
+
         $this->render('container', array('content' => $this->widget('NewAccount', array('conf' => $confirm), true)));
     }
 
@@ -205,8 +207,6 @@ class SiteController extends Controller {
 
         $this->render('container', array('content' => $this->widget('ForgottenAccount', array('conf' => $confirm), true)));
     }
-
-
 
     /**
      * Logs out the current user and redirect to homepage.

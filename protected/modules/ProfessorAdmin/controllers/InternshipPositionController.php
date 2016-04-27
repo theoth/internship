@@ -27,7 +27,7 @@ class InternshipPositionController extends Controller {
         return array(
             
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array( 'update', 'index', 'view', 'admin'),
+                'actions' => array( 'update', 'index', 'view', 'admin','history'),
                 'expression' => array('Controller', 'isUserProfessor'),
             ),
             array('deny', // deny all users
@@ -206,6 +206,18 @@ class InternshipPositionController extends Controller {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }
+    }
+    
+    public function actionHistory() {
+        $model = new InternshipPosition('searchCompletedProfessor');
+        
+        $model->unsetAttributes();  // clear any default values
+        if (isset($_GET['InternshipPosition']))
+            $model->attributes = $_GET['InternshipPosition'];
+
+        $this->render('history', array(
+            'model' => $model,
+        ));
     }
 
 }
