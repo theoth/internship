@@ -89,7 +89,7 @@
 
     $date_current = date('Y-m-d');
     //echo 'date current is ' . $date_current;
-    $deadline = date('Y-m-d', strtotime($model->date_end . '+ 10 days'));
+    //$deadline = date('Y-m-d', strtotime($model->date_end . '+ 10 days'));
 
 
     $month1_datetime = date('Y-m-d', strtotime($model->date_start . '+ 1 months'));
@@ -127,7 +127,7 @@
     <?php } else {
         ?>
         <script>
-            countdown('<?php echo $deadline; ?>', 4);
+            countdown('<?php echo $model->deadline; ?>', 4);
 
         </script>
         <span><b>Απομένουν </b></span><span id="countdown4"></span> <span><b> για να ολοκληρωθεί η πρακτική άσκηση</b>.</span>
@@ -146,21 +146,18 @@
 
     if ($month_current >= $month + 1 && $year_current == $year) {
         $flag1 = false;
-        $body = 'άνοιξε ο πρώτος μήνας,πρέπει να υποβάλλετε τη φόρμα σας για τον φοιτητή.';
-        $this->SendMail($model->company_id, $body);
+        
     }
     if ($month_current >= $month + 2 && $year_current == $year) {
         $flag2 = false;
-        $body = 'άνοιξε ο δεύτερος μήνας,πρέπει να υποβάλλετε τη φόρμα σας για τον φοιτητή.';
-        $this->SendMail($model->company_id, $body);
+       
     }
     if ($month_current >= $month + 3 && $year_current == $year) {
         $flag3 = false;
-        $body = 'άνοιξε ο τρίτος μήνας,πρέπει να υποβάλλετε την τελική φόρμα σας για τον φοιτητή.';
-        $this->SendMail($model->company_id, $body);
+        
     }
 
-    if ($date_current > $deadline) {
+    if ($date_current > $model->deadline) {
         $flag1 = true;
         $flag2 = true;
         $flag3 = true;

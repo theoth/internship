@@ -8,14 +8,17 @@ $this->breadcrumbs=array(
 	'Update',
 );
 
+$in=InternshipPosition::model()->findByAttributes(array('questionnaire_professor_id'=>$model->id));
+
+
 $this->menu=array(
-	array('label'=>'List QuestionnaireCompany', 'url'=>array('index')),
-	array('label'=>'Create QuestionnaireCompany', 'url'=>array('create')),
-	array('label'=>'View QuestionnaireCompany', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage QuestionnaireCompany', 'url'=>array('admin')),
+	//array('label'=>'List QuestionnaireCompany', 'url'=>array('index')),
+	//array('label'=>'Create QuestionnaireCompany', 'url'=>array('create')),
+	//array('label'=>'View QuestionnaireCompany', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'Πίσω', 'url'=>array('internshipPosition/view','id'=>$in->id)),
 );
 ?>
 
-<h1>Update QuestionnaireCompany <?php echo $model->id; ?></h1>
+<h1>Συμπλήρωση ερωτηματολογίου</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

@@ -11,6 +11,7 @@ $this->menu=array(
 	array('label'=>'Αναζήτηση Θέσης', 'url'=>array('admin')),
 );
 
+
 ?>
 
 
@@ -41,7 +42,9 @@ $this->menu=array(
     <?php echo CHtml::link('εμφάνιση', array('view', 'id'=>$data->id)); ?>
     <br />
     <?php
+    //var_dump($student);var_dump($data);die();
     $hasRequest = RequestInternship::model()->findByAttributes(array('student_id' => $student->id, 'internship_position_id' => $data->id));
+    
     if ($hasRequest) {
         echo 'έχετε κάνει αίτηση για αυτή την θέση';
     }

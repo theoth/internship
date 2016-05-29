@@ -34,12 +34,12 @@ class Professor extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, department', 'required'),
-			array('user_id', 'numerical', 'integerOnly'=>true),
-			array('department', 'length', 'max'=>45),
+			array('user_id, department_id', 'required'),
+			array('user_id,department_id', 'numerical', 'integerOnly'=>true),
+			
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, user_id, department', 'safe', 'on'=>'search'),
+			array('id, user_id, department_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -53,6 +53,8 @@ class Professor extends CActiveRecord
 		return array(
 			'internshipPositions' => array(self::HAS_MANY, 'InternshipPosition', 'professor_id'),
 			'user' => array(self::BELONGS_TO, 'Users', 'user_id'),
+                        'departments' => array(self::BELONGS_TO, 'Department', 'department_id'),
+
 		);
 	}
 
@@ -64,7 +66,7 @@ class Professor extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'user_id' => 'ID Χρήστη',
-			'department' => 'Τμήμα',
+			'department_id' => 'Τμήμα',
 		);
 	}
 
@@ -84,16 +86,43 @@ class Professor extends CActiveRecord
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
+            
+            
+            
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('user_id',$this->user_id);
-		$criteria->compare('department',$this->department,true);
+		$criteria->compare('department_id',$this->department_id,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
+        
+        public function searchByDepartment($id)
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+            
+            
+            
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('id',$this->id);
+		$criteria->compare('user_id',$this->user_id);
+		
+
+                if($id!=NULL){
+                    $criteria->compare('department_id',$id,true);
+                }
+                
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+        
+        
 
         
          public function getBothnamesurname() {

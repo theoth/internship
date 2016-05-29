@@ -58,6 +58,12 @@ class InternshipPositionController extends Controller {
     public function actionCreate() {
         $model = new InternshipPosition;
 
+        $department = Department::model()->findByAttributes(array('user_id' => Yii::app()->user->id));
+
+        if ($department != NULL) {
+            $model->department_id = $department->id;
+        }
+
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
@@ -124,12 +130,19 @@ class InternshipPositionController extends Controller {
      */
     public function actionIndex() {
 
+        $student = Student::model()->findByAttributes(array('user_id' => Yii::app()->user->id));
+
+        $did = $student->department_id;
         $criteria = new CDbCriteria();
         $criteria->addCondition('student_id IS NULL');
         $criteria->addCondition('published=1');
-        $student = Student::model()->findByAttributes(array('user_id' => Yii::app()->user->id));
+        $criteria->addCondition('department_id=:did');
+        $criteria->params = (array(':did' => $did));
+
 
         $dataProvider = new CActiveDataProvider('InternshipPosition', array('criteria' => $criteria));
+
+
         $this->render('index', array(
             'dataProvider' => $dataProvider,
             'student' => $student,
@@ -210,18 +223,26 @@ class InternshipPositionController extends Controller {
         $model = InternshipPosition::model()->findByPk($id);
         if ($model === null)
             throw new CHttpException(404, 'The requested page does not exist.');
-        return $model;
-    }
 
-    /**
-     * Performs the AJAX validation.
-     * @param InternshipPosition $model the model to be validated
-     */
-    protected function performAjaxValidation($model) {
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'internship-position-form') {
-            echo CActiveForm::validate($model);
-            Yii::app()->end();
+        $student = Student::model()->findByAttributes(array('user_id' => Yii::app()->user->id));
+        $did = $student->department_id;
+        if ($model->department_id != $did) {
+            throw new CHttpException(404, 'You are not authorized to perform this action.');
+        } else {
+            return $model;
         }
     }
+
+
+/**
+ * Performs the AJAX validation.
+ * @param InternshipPosition $model the model to be validated
+ */
+protected function performAjaxValidation($model) {
+if (isset($_POST['ajax']) && $_POST['ajax'] === 'internship-position-form') {
+echo CActiveForm::validate($model);
+Yii::app()->end();
+}
+}
 
 }

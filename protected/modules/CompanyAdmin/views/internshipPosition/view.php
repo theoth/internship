@@ -11,6 +11,7 @@ $this->menu=array(
 	array('label'=>'Πίσω', 'url'=>array('index')),
 	
 	array('label'=>'Υποβολή στοιχείων', 'url'=>array('update', 'id'=>$model->id)),
+        array('label'=>'Συμπλήρωση ερωτηματολογίου', 'url'=>array('questionnaireCompany/update','id' => $model->questionnaire_company_id)),
 	
 );
 ?>

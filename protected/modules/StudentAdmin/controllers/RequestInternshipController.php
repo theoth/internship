@@ -119,7 +119,9 @@ class RequestInternshipController extends Controller {
                 $model->student->counter_requests=$counter;
                 $model->student->save();
                 $model->internshipPosition->status=3;
-        $model->internshipPosition->save();
+                $model->internshipPosition->save();
+                
+                
                 $this->redirect(array('view', 'id' => $model->id));
             }
         }

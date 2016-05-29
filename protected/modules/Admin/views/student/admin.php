@@ -2,14 +2,14 @@
 /* @var $this StudentController */
 /* @var $model Student */
 
-$this->breadcrumbs=array(
-	'Students'=>array('index'),
-	'Manage',
+$this->breadcrumbs = array(
+    'Students' => array('index'),
+    'Manage',
 );
 
-$this->menu=array(
-	array('label'=>'Πίσω στους φοιτητές', 'url'=>array('index')),
-	array('label'=>'Δημιουργία νέου φοιτητή', 'url'=>array('create')),
+$this->menu = array(
+    array('label' => 'Πίσω στους φοιτητές', 'url' => array('index')),
+    array('label' => 'Δημιουργία νέου φοιτητή', 'url' => array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -30,45 +30,54 @@ $('.search-form form').submit(function(){
 
 
 <div class="search-form" style="display:none">
-<?php $this->renderPartial('_search',array(
-	'model'=>$model,
-)); ?>
+    <?php
+    $this->renderPartial('_search', array(
+        'model' => $model,
+    ));
+    ?>
 </div><!-- search-form -->
 
-<?php 
+<?php
+$user = Users::model()->findByPk(Yii::app()->user->id);
+$d = Department::model()->findByAttributes(array('type_admin' => $user->type));
+
+if ($d == NULL) {
+    $did = NULL;
+} else {
+    $did = $d->id;
+}
+?>
+
+<?php
 //var_dump($model);
 //die();
 $this->widget('booster.widgets.TbGridView', array(
-	'id'=>'student-grid',
-	'dataProvider'=>$model->search(),
-	'filter'=>$model,
-	'columns'=>array(
-            'users.last_name',
-            'users.first_name',
-		'id',
-            
-		
-		'user_id',
-		'department',
-                
-                
-            
-		/*
-		'father_name',
-		'mother_name',
-		'address',
-		'gender',
-		'identity_number',
-		'afm',
-		'doy',
-		'ama_ika',
-		'amka',
-		'year_in',
-		'birth_day',
-		'IBAN',
-		*/
-		array(
-			'class'=>'booster.widgets.TbButtonColumn',
-		),
-	),
-)); ?>
+    'id' => 'student-grid',
+    'dataProvider' => $model->searchByDepartment($did),
+    'filter' => $model,
+    'columns' => array(
+        'users.last_name',
+        'users.first_name',
+        'id',
+        'user_id',
+        'department_id',
+        /*
+          'father_name',
+          'mother_name',
+          'address',
+          'gender',
+          'identity_number',
+          'afm',
+          'doy',
+          'ama_ika',
+          'amka',
+          'year_in',
+          'birth_day',
+          'IBAN',
+         */
+        array(
+            'class' => 'booster.widgets.TbButtonColumn',
+        ),
+    ),
+));
+?>

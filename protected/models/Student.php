@@ -10,7 +10,7 @@
  * @property string $file_grades_name
  * @property string $file_ika
  * @property integer $user_id
- * @property string $department
+ * @property string $department_id
  * @property string $father_name
  * @property string $mother_name
  * @property string $address
@@ -46,8 +46,8 @@ class Student extends CActiveRecord {
         //var_dump($_FILES);
         $this->file_cv = CUploadedFile::getInstance($this, 'file_cv');
         //var_dump($this->file_cv);
-         //var_dump($_FILES); die();
-         
+        //var_dump($_FILES); die();
+
         if ($this->file_cv):
             $f1 = Yii::app()->basePath . '/../images/file_cv/' . $this->file_cv->name;
             if (file_exists($f1)) {
@@ -62,7 +62,7 @@ class Student extends CActiveRecord {
         if ($this->file_grades):
             $f2 = Yii::app()->basePath . '/../images/file_grades/' . $this->file_grades->name;
             if (file_exists($f2)) {
-                $this->addError('file', 'Επιλέξτε όνομα της μορφής : arxeio.doc');  
+                $this->addError('file', 'Επιλέξτε όνομα της μορφής : arxeio.doc');
             }
         endif;
 
@@ -81,16 +81,16 @@ class Student extends CActiveRecord {
     }
 
     public function beforeSave() {
-       // var_dump($this->file_grades);
+        // var_dump($this->file_grades);
         if ($this->file_cv) {
             $f1 = Yii::app()->basePath . '/../images/file_cv/' . $this->file_cv->name;
             $this->file_cv->saveAs($f1);
-            $this->file_cv_name = $this->file_cv->name ;
+            $this->file_cv_name = $this->file_cv->name;
         }
 
 
-        if ($this->file_grades) { 
-            
+        if ($this->file_grades) {
+
             $f2 = Yii::app()->basePath . '/../images/file_grades/' . $this->file_grades->name;
             $this->file_grades->saveAs($f2);
             $this->file_grades_name = $this->file_grades->name;
@@ -101,7 +101,13 @@ class Student extends CActiveRecord {
             $this->f_ika->saveAs($f3);
             $this->file_ika = $this->f_ika->name;
         }
-        
+
+        $this->gen_average = round($this->gen_average, 2);
+        $this->win_el_average = round($this->win_el_average, 2);
+        $this->sum_el_average = round($this->sum_el_average, 2);
+
+
+
         return parent::beforeSave();
     }
 
@@ -112,15 +118,16 @@ class Student extends CActiveRecord {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('user_id, department, father_name, mother_name, address, gender, identity_number, afm, doy, ama_ika, amka, year_in, birth_day, IBAN,counter_requests', 'required'),
-            array('user_id, year_in,counter_requests,is_in', 'numerical', 'integerOnly' => true),
-            array('file_cv_name, file_grades_name, file_ika,department, father_name, mother_name, address, doy, ama_ika, amka, IBAN', 'length', 'max' => 45),
+            array('user_id, department_id, father_name, mother_name, address, gender, identity_number, afm, doy, ama_ika, amka, year_in, birth_day, IBAN,counter_requests', 'required'),
+            array('submit_courses,user_id, year_in,counter_requests,is_in,department_id,passed_courses,passed_win_el_courses,passed_sum_el_courses', 'numerical', 'integerOnly' => true),
+            array('gen_average,win_el_average,sum_el_average', 'numerical', 'integerOnly' => false),
+            array('file_cv_name, file_grades_name, file_ika, father_name, mother_name, address, doy, ama_ika, amka, IBAN', 'length', 'max' => 45),
             array('file_cv', 'file', 'types' => 'jpg, gif, png, doc, pdf, txt', 'allowEmpty' => true),
             array('file_grades', 'file', 'types' => 'jpg, gif, png, doc, pdf, txt', 'allowEmpty' => true),
             array('f_ika', 'file', 'types' => 'jpg, gif, png, doc, pdf, txt', 'allowEmpty' => true),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
-            array('users.last_name,id,file_cv_name, file_grades_name, file_ika,user_id, department, father_name, mother_name, address, gender, identity_number, afm, doy, ama_ika, amka, year_in, birth_day, IBAN,counter_requests', 'safe', 'on' => 'search'),
+            array('submit_courses,users.last_name,id,file_cv_name, file_grades_name, file_ika,user_id, department_id, father_name, mother_name, address, gender, identity_number, afm, doy, ama_ika, amka, year_in, birth_day, IBAN,counter_requests', 'safe', 'on' => 'search'),
         );
     }
 
@@ -135,6 +142,7 @@ class Student extends CActiveRecord {
             'requestInternships' => array(self::HAS_MANY, 'RequestInternship', 'student_id'),
             'user' => array(self::BELONGS_TO, 'Users', 'user_id'),
             'users' => array(self::BELONGS_TO, 'Users', 'user_id'),
+            'departments' => array(self::BELONGS_TO, 'Department', 'department_id'),
         );
     }
 
@@ -159,7 +167,7 @@ class Student extends CActiveRecord {
             'file_grades_name' => 'Αναλυτική Βαθμολογία',
             'file_ika' => 'Βεβαίωση ΙΚΑ',
             'user_id' => 'ID χρήστη',
-            'department' => 'Τμήμα',
+            'department_id' => 'Τμήμα',
             'father_name' => 'Όνομα Πατρός',
             'mother_name' => 'Όνομα Μητρός',
             'address' => 'Διεύθυνση',
@@ -172,7 +180,13 @@ class Student extends CActiveRecord {
             'year_in' => 'Έτος εισαγωγής',
             'birth_day' => 'Ημερομηνία Γέννησης',
             'IBAN' => 'IBAN',
-            'counter_requests'=>'μέτρηση αιτήσεων',
+            'counter_requests' => 'μέτρηση αιτήσεων',
+            'gen_average'=>'Γενικός μέσος όρος',
+            'passed_courses'=>'Συνολικά περασμένα μαθήματα',
+            'win_el_average'=>'Μέσος όρος μαθημάτων επιλογής χειμερινού εξαμήνου',
+            'sum_el_average'=>'Μέσος όρος μαθημάτων επιλογής εαρινού εξαμήνου',
+            'passed_sum_el_courses'=>'Περασμένα μαθήματα επιλογής εαρινού εξαμήνου',
+            'passed_win_el_courses'=>'Περασμένα μαθήματα επιλογής χειμερινού εξαμήνου',
         );
     }
 
@@ -199,9 +213,15 @@ class Student extends CActiveRecord {
         $criteria->compare('file_grades_name', $this->file_grades_name, true);
         $criteria->compare('file_ika', $this->file_ika, true);
         // $criteria->compare('users.last_name', $this->users->last_name, true);
-        
+
         $criteria->compare('user_id', $this->user_id);
-        $criteria->compare('department', $this->department, true);
+        $criteria->compare('passed_courses', $this->passed_courses);
+        $criteria->compare('gen_average', $this->gen_average);
+        $criteria->compare('passed_win_el_courses', $this->passed_win_el_courses);
+        $criteria->compare('passed_sum_el_courses', $this->passed_sum_el_courses);
+        $criteria->compare('win_el_average', $this->win_el_average);
+        $criteria->compare('sum_el_average', $this->sum_el_average);
+        $criteria->compare('department_id', $this->department_id, true);
         $criteria->compare('father_name', $this->father_name, true);
         $criteria->compare('mother_name', $this->mother_name, true);
         $criteria->compare('address', $this->address, true);
@@ -222,6 +242,27 @@ class Student extends CActiveRecord {
         ));
     }
 
+    public function searchByDepartment($id) {
+        // @todo Please modify the following code to remove attributes that should not be searched.
+
+
+
+
+        $criteria = new CDbCriteria;
+
+        $criteria->compare('id', $this->id);
+        $criteria->compare('user_id', $this->user_id);
+
+
+        if ($id != NULL) {
+            $criteria->compare('department_id', $id, true);
+        }
+
+        return new CActiveDataProvider($this, array(
+            'criteria' => $criteria,
+        ));
+    }
+
     /**
      * Returns the static model of the specified AR class.
      * Please note that you should have this exact method in all your CActiveRecord descendants!
@@ -232,6 +273,4 @@ class Student extends CActiveRecord {
         return parent::model($className);
     }
 
-    
-    
 }

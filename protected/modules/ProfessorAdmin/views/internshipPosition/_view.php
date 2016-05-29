@@ -17,10 +17,16 @@
     <?php echo CHtml::encode(CHtml::encode($data->company->brand)); ?>
     <br />
 
-
+    <?php ?>
 
     <b><?php echo CHtml::encode($data->getAttributeLabel('student_id')); ?>:</b>
-    <?php echo CHtml::encode($data->student->getBothnamesurname()); ?>
+    <?php 
+    if ($data->student!=null){
+    echo CHtml::encode($data->student->getBothnamesurname());}
+    else{
+        echo 'Δεν έχει ανατεθεί ακόμα σε φοιτητή.';
+    }
+    ?>
     <br />
     
     <b><?php echo CHtml::encode($data->getAttributeLabel('date_start')); ?>:</b>

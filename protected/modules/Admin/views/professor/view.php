@@ -24,7 +24,7 @@ $this->widget('booster.widgets.TbDetailView', array(
     'attributes' => array(
         'id',
         'user_id',
-        'department',
+        'department_id',
         'user.username',
         'user.password',
         'user.first_name',
@@ -32,7 +32,7 @@ $this->widget('booster.widgets.TbDetailView', array(
         'user.email',
         'user.telephone',
         'user.academicid',
-        'user.department',
+        
         'user.activated',
 
     ),

@@ -26,7 +26,7 @@ class InternshipPositionController extends Controller {
     public function accessRules() {
         return array(
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'index', 'view', 'admin', 'delete', 'award','history'),
+                'actions' => array('create','statistics', 'studentBook','ProfessorBook','CompanyBook', 'update', 'index', 'view', 'admin', 'delete', 'award', 'history', 'viewNewPositions', 'publishPosition', 'detailsNewPosition', 'printOutForm', 'printOutGrid'),
                 'expression' => array('Controller', 'isUserAdmin'),
             ),
             array('deny', // deny all users
@@ -46,6 +46,113 @@ class InternshipPositionController extends Controller {
             'month' => $month,
         ));
     }
+    
+    public function actionStatistics() {
+        $this->render('statistics', array(
+            
+        ));
+    }
+
+    public function actionStudentBook($id) {
+
+        $model = $this->loadModel($id);
+
+        $model_quest = QuestionnaireStudent::model()->findByPk($model->questionnaire_student_id);
+//$this->redirect(array('requestInternship/viewRequests'));
+
+        $this->layout = '//layouts/mainAdminOnlyContent';
+        $this->render('StudentBook', array(
+            'model' => $this->loadModel($id),
+            'model_quest' => $model_quest,
+            'htmlOptions'=>array('target'=>'_blank'),
+            
+        ));
+    }
+
+    public function actionProfessorBook($id) {
+        $model = $this->loadModel($id);
+
+        $model_quest = QuestionnaireProfessor::model()->findByPk($model->questionnaire_professor_id);
+//$this->redirect(array('requestInternship/viewRequests'));
+
+        $this->layout = '//layouts/mainAdminOnlyContent';
+        $this->render('ProfessorBook', array(
+            'model' => $this->loadModel($id),
+            'model_quest' => $model_quest,
+            
+        ));
+    }
+
+    public function actionCompanyBook($id) {
+        $model = $this->loadModel($id);
+
+        $model_quest = QuestionnaireCompany::model()->findByPk($model->questionnaire_company_id);
+//$this->redirect(array('requestInternship/viewRequests'));
+
+        $this->layout = '//layouts/mainAdminOnlyContent';
+        $this->render('CompanyBook', array(
+            'model' => $this->loadModel($id),
+            'model_quest' => $model_quest,
+            
+        ));
+    }
+
+    public function actionDetailsNewPosition($id) {
+        $this->render('detailsNewPosition', array(
+            'model' => $this->loadModel($id),
+        ));
+    }
+
+    public function actionViewNewPositions() {
+        $dataProvider = new CActiveDataProvider('InternshipPosition'
+                , array(
+            'criteria' => array(
+                'condition' =>
+                'published=0',
+            )
+                )
+        );
+        $this->render('viewNewPositions', array(
+            'dataProvider' => $dataProvider,
+        ));
+    }
+
+    public function actionPublishPosition($iid) {
+        $in = InternshipPosition::model()->findByPk($iid);
+
+        $in->published = 1;
+
+        if ($in->save()) {
+
+            $this->redirect(array('viewNewPositions'));
+        }
+    }
+
+    public function actionPrintOutForm() {
+        $model = new PrintOutForm;
+
+        if (isset($_POST['PrintOutForm'])) {
+            $model->attributes = $_POST['PrintOutForm'];
+            $this->redirect(array('printOutGrid', 'from' => $model->from, 'to' => $model->to));
+        }
+
+        $this->render('printOut', array(
+            'model' => $model,
+        ));
+    }
+
+    public function actionPrintoutgrid($from, $to) {
+        $model = new InternshipPosition('search');
+        $model->unsetAttributes();  // clear any default values
+
+
+        $this->layout = '//layouts/mainAdminOnlyContent';
+        $this->render('printOutGrid', array(
+            'model' => $model,
+            'from' => $from,
+            'to' => $to,
+        ));
+    }
 
     /**
      * Creates a new model.
@@ -53,12 +160,19 @@ class InternshipPositionController extends Controller {
      */
     public function actionCreate() {
         $model = new InternshipPosition;
+        $user = Users::model()->findByPk(Yii::app()->user->id);
+        $department = Department::model()->findByAttributes(array('type_admin' => $user->type));
+
+        if ($department != NULL) {
+            $model->department_id = $department->id;
+        }
 
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
         if (isset($_POST['InternshipPosition'])) {
             $model->attributes = $_POST['InternshipPosition'];
+            //var_dump($model);die();
             if ($model->save())
                 $this->redirect(array('view', 'id' => $model->id));
         }
@@ -96,6 +210,25 @@ class InternshipPositionController extends Controller {
         $model = $this->loadModel($id);
         $student = Student::model()->findByPk($sid);
 
+        $de = Department::model()->findByPk($model->department_id);
+
+
+        $days_current_month = date('d');
+
+
+        if ($days_current_month > 15) {
+
+            $model->date_start = date('Y-m-d', strtotime("+2 months -$days_current_month days +1 days"));
+            $model->date_end = date('Y-m-d', strtotime("+$de->period months -1 days", strtotime($model->date_start)));
+        } else {
+            $model->date_start = date('Y-m-d', strtotime("+1 months -$days_current_month days +1 days"));
+            $model->date_end = date('Y-m-d', strtotime("+$de->period months -1 days", strtotime($model->date_start)));
+        }
+
+        $model->deadline = date('Y-m-d', strtotime($model->date_end . '+ 10 days'));
+
+
+
 
 
 
@@ -129,7 +262,7 @@ class InternshipPositionController extends Controller {
 
                 $r_success->save();
 
-                $this->redirect(array('view', 'id' => $model->id));
+                $this->redirect(array('requestInternship/viewRequests'));
             }
             //echo CHtml::errorSummary($model);die();
         }
@@ -159,7 +292,23 @@ class InternshipPositionController extends Controller {
      * Lists all models.
      */
     public function actionIndex() {
-        $dataProvider = new CActiveDataProvider('InternshipPosition');
+
+        $user = Users::model()->findByPk(Yii::app()->user->id);
+        $department = Department::model()->findByAttributes(array('type_admin' => $user->type));
+
+
+        if ($department != NULL) {
+            $did = $department->id;
+            $dataProvider = new CActiveDataProvider('InternshipPosition', array(
+                'criteria' => array(
+                    'condition' => 'department_id=:did',
+                    'params' => array(':did' => $did)
+                )
+                    )
+            );
+        } else {
+            $dataProvider = new CActiveDataProvider('InternshipPosition');
+        }
         $this->render('index', array(
             'dataProvider' => $dataProvider,
         ));
@@ -178,10 +327,10 @@ class InternshipPositionController extends Controller {
             'model' => $model,
         ));
     }
-    
+
     public function actionHistory() {
         $model = new InternshipPosition('searchCompleted');
-        
+
         $model->unsetAttributes();  // clear any default values
         if (isset($_GET['InternshipPosition']))
             $model->attributes = $_GET['InternshipPosition'];
@@ -202,7 +351,20 @@ class InternshipPositionController extends Controller {
         $model = InternshipPosition::model()->findByPk($id);
         if ($model === null)
             throw new CHttpException(404, 'The requested page does not exist.');
-        return $model;
+
+        $user = Users::model()->findByPk(Yii::app()->user->id);
+        $department = Department::model()->findByAttributes(array('type_admin' => $user->type));
+        if ($department != NULL) {
+            $did = $department->id;
+            if ($model->department_id != $did) {
+                throw new CHttpException(404, 'You are not authorized to perform this action.');
+            } else {
+                return $model;
+            }
+        } else {
+
+            return $model;
+        }
     }
 
     /**

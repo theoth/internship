@@ -56,9 +56,16 @@ class StudentController extends Controller {
     public function actionCreate() {
         $model = new StudentForm;
         $model->isNew = true;
+        
+        $user=  Users::model()->findByPk(Yii::app()->user->id);
+        $department=Department::model()->findByAttributes(array('type_admin'=>$user->type));
+
+        if ($department != NULL) {
+            $model->department_id = $department->id;
+        }
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
-
+        //var_dump($_POST);
         if (isset($_POST['StudentForm'])) {
 
             $model->attributes = $_POST['StudentForm'];
@@ -74,20 +81,23 @@ class StudentController extends Controller {
                 $a1 = $u->save();
                 
                 $a2 = false;
+                
                 if ($a1) {
                     $student->user_id = $u->id;
                     //var_dump($student);
                     //die();
                     $a2 = $student->save();
                 }
-                //var_dump(CHtml::errorSummary($u));
-                //var_dump(CHtml::errorSummary($student));
+                
+                var_dump(CHtml::errorSummary($u));
+                var_dump(CHtml::errorSummary($student));
 
                 
                 
                 if ($a1 && $a2)
                     $this->redirect(array('view', 'id' => $student->id));
             }
+            echo (CHtml::errorSummary($model));
         }
 
         $this->render('create', array(
@@ -158,11 +168,31 @@ class StudentController extends Controller {
      * Lists all models.
      */
     public function actionIndex() {
-        $dataProvider = new CActiveDataProvider('Student');
+
+        $user=  Users::model()->findByPk(Yii::app()->user->id);
+        $department=Department::model()->findByAttributes(array('type_admin'=>$user->type));
+        
+        if ($department != NULL) {
+            
+            $did = $department->id;
+            $dataProvider = new CActiveDataProvider('Student', array(
+                'criteria' => array(
+                    'condition' => 'department_id=:did',
+                    'params' => array(':did' => $did)
+                )
+                    )
+            );
+            //var_dump($dataProvider->data);die();
+            
+        } else {
+            $dataProvider = new CActiveDataProvider('Student');
+        }
         $this->render('index', array(
             'dataProvider' => $dataProvider,
         ));
-        //this->layout;
+       
+        
+        
     }
 
     /**
@@ -190,8 +220,23 @@ class StudentController extends Controller {
         $model = Student::model()->findByPk($id);
         if ($model === null)
             throw new CHttpException(404, 'The requested page does not exist.');
-        return $model;
+
+        $user=  Users::model()->findByPk(Yii::app()->user->id);
+        $department=Department::model()->findByAttributes(array('type_admin'=>$user->type));
+        if ($department != NULL) {
+            $did = $department->id;
+            if ($model->department_id != $did) {
+                throw new CHttpException(404, 'You are not authorized to perform this action.');
+            } else {
+                return $model;
+            }
+        } else {
+
+            return $model;
+        }
     }
+
+    
 
     /**
      * Performs the AJAX validation.

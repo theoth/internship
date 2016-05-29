@@ -22,8 +22,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'department'); ?>
-		<?php echo $form->textField($model,'department',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->label($model,'department_id'); ?>
+		<?php echo $form->textField($model,'department_id',array('size'=>45,'maxlength'=>45)); ?>
 	</div>
 
 	<div class="row buttons">

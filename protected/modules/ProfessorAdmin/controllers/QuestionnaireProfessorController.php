@@ -27,10 +27,7 @@ class QuestionnaireProfessorController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
+			
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
 				'users'=>array('@'),
@@ -40,6 +37,7 @@ class QuestionnaireProfessorController extends Controller
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
+                                'actions' => array('index','view','delete'),
 				'users'=>array('*'),
 			),
 		);
@@ -90,6 +88,7 @@ class QuestionnaireProfessorController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+                $in=InternshipPosition::model()->findByAttributes(array('questionnaire_professor_id'=>$model->id));
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -98,7 +97,7 @@ class QuestionnaireProfessorController extends Controller
 		{
 			$model->attributes=$_POST['QuestionnaireProfessor'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('internshipPosition/view','id'=>$in->id));
 		}
 
 		$this->render('update',array(

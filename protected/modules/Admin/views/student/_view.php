@@ -22,8 +22,8 @@
 	<?php echo CHtml::encode($data->users->last_name); ?>
 	<br />
         
-        <b><?php echo CHtml::encode($data->getAttributeLabel('department')); ?>:</b>
-	<?php echo CHtml::encode($data->department); ?>
+        <b><?php echo CHtml::encode($data->getAttributeLabel('department_id')); ?>:</b>
+	<?php echo CHtml::encode($data->department_id); ?>
 	<br />
 
         <?php echo CHtml::link('εμφάνιση φοιτητή', array('view', 'id'=>$data->id)); ?>

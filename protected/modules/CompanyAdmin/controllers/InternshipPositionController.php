@@ -87,17 +87,35 @@ class InternshipPositionController extends Controller {
 
         $model->company_id = $company->id;
         $model->year = date('Y');
+
         if (isset($_POST['InternshipPosition'])) {
             $model->attributes = $_POST['InternshipPosition'];
             $model->published = 0;
-            if ($model->save())
+            $modelQuSt=new QuestionnaireStudent;
+            $modelQuSt->save();
+            //var_dump($modelQuSt);
+            $model->questionnaire_student_id=$modelQuSt->id;
+            $modelQuPr=new QuestionnaireProfessor;
+            $modelQuPr->save();
+            $model->questionnaire_professor_id=$modelQuPr->id;
+            $modelQuCo=new QuestionnaireCompany;
+            $modelQuCo->save();
+            $model->questionnaire_company_id=$modelQuCo->id;
+            
+            //var_dump($_POST['InternshipPosition']);die();
+            
+        if ($model->save()) {
+                
+                
+                
                 $this->redirect(array('view', 'id' => $model->id));
+        } 
         }
-
         $this->render('create', array(
             'model' => $model,
         ));
     }
+    
     
     public function end_internship($id) {
         $model = $this->loadModel($id);

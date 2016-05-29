@@ -53,8 +53,8 @@ class QuestionnaireProfessor extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('professor_id', 'required'),
-			array('id, professor_id, st1, st2, st3, st4, st5, in1, in2, in3, in4, in5, in6, in7, in8, in9, in10, in11', 'numerical', 'integerOnly'=>true),
+			
+			array('id, st1, st2, st3, st4, st5, in1, in2, in3, in4, in5, in6, in7, in8, in9, in10, in11', 'numerical', 'integerOnly'=>true),
 			array('st6, st7, in12, in13, in14, in15, in16, in17, comments', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -70,7 +70,7 @@ class QuestionnaireProfessor extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'professor' => array(self::BELONGS_TO, 'Professor', 'professor_id'),
+			'internshipPositions' => array(self::HAS_MANY, 'InternshipPosition', 'questionnnaire_professor_id'),
 		);
 	}
 
@@ -81,7 +81,7 @@ class QuestionnaireProfessor extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'professor_id' => 'Professor',
+			
 			'st1' => 'Ο φοιτητής/τρια ανταποκρίθηκε στις υποχρεώσεις που πηγάζουν από τη συμμετοχή του στο πρόγραμμα της Πρακτικής Άσκησης;',
 			'st2' => 'Ο/Η φοιτητής/ρια ήταν ικανοποιημένος/η από την πρακτική του/της άσκηση;',
 			'st3' => 'Σε γενικές γραμμές είστε ικανοποιημένος/η από την συνεργασία σας με τον/ην συγκεκριμένο φοιτητή/τρια;',
@@ -129,7 +129,7 @@ class QuestionnaireProfessor extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('professor_id',$this->professor_id);
+		
 		$criteria->compare('st1',$this->st1);
 		$criteria->compare('st2',$this->st2);
 		$criteria->compare('st3',$this->st3);

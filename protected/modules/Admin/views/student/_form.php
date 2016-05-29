@@ -2,6 +2,7 @@
 /* @var $this StudentController */
 /* @var $model Student */
 /* @var $form booster.widgets.TbActiveForm */
+$Departments = Department::GetList();
 ?>
 
 <div class="form">
@@ -23,7 +24,7 @@
 
 
 
-    <?php //echo $form->errorSummary($model); ?>
+    <?php echo $form->errorSummary($model); ?>
 
     <br>
     <br>
@@ -81,41 +82,56 @@
         <?php //echo $form->error($model, 'aem'); ?>
     </div>
 
+    <?php
+    $user = Users::model()->findByPk(Yii::app()->user->id);
+    $department = Department::model()->findByAttributes(array('type_admin' => $user->type));
+    $flag4 = false;
+    if ($department != NULL) {
+        $flag4 = true;
+    }
+    ?>
+    <div class="row">
+
+        <?php echo $form->dropDownListGroup($model, 'department_id', array('widgetOptions' => array('data' => $Departments, 'htmlOptions' => array('empty' => '-', 'disabled' => $flag4)))); ?>
+        <?php
+        ?>
+    </div>
+
 
     <hr/>
 
     <div class="row">
 
-        <?php //echo $form->fileFieldGroup($model, 'file_cv', array('size' => 45, 'maxlength' => 45)); ?>
+<?php //echo $form->fileFieldGroup($model, 'file_cv', array('size' => 45, 'maxlength' => 45));  ?>
         <div class='form-group'>
-            <?php echo $form->labelEx($model, 'file_cv'); ?>
+        <?php echo $form->labelEx($model, 'file_cv'); ?>
             <?php echo CHtml::fileField('Student[file_cv]', '', array('class' => 'form-control')); ?>
             <?php echo $form->error($model, 'file_cv'); ?>
         </div>
 
     </div>
 
-    
-    
+
+
     <div class="row">
 
-        <?php //echo $form->fileFieldGroup($model, 'file_cv', array('size' => 45, 'maxlength' => 45)); ?>
+<?php //echo $form->fileFieldGroup($model, 'file_cv', array('size' => 45, 'maxlength' => 45));  ?>
         <div class='form-group'>
-            <?php echo $form->labelEx($model, 'file_grades'); ?>
+        <?php echo $form->labelEx($model, 'file_grades'); ?>
             <?php echo CHtml::fileField('Student[file_grades]', '', array('class' => 'form-control')); ?>
             <?php echo $form->error($model, 'file_grades'); ?>
         </div>
 
     </div>
 
-   
-    
+
+
 
     <div class="row">
 
-        <?php //echo $form->fileFieldGroup($model, 'file_cv', array('size' => 45, 'maxlength' => 45)); ?>
+<?php //echo $form->fileFieldGroup($model, 'file_cv', array('size' => 45, 'maxlength' => 45));  ?>
         <div class='form-group'>
-            <?php echo $form->labelEx($model, 'f_ika'); ?>
+        <?php echo $form->labelEx($model, 'f_ika'); ?>
             <?php echo CHtml::fileField('Student[f_ika]', '', array('class' => 'form-control')); ?>
             <?php echo $form->error($model, 'f_ika'); ?>
         </div>
@@ -123,92 +139,88 @@
     </div>
 
 
-    <div class="row">
-        <?php //echo $form->labelEx($model, 'department'); ?>
-        <?php echo $form->dropDownListGroup($model, 'department', array('widgetOptions' => array('data' => array(Utils::departmentsList(), array('empty' => '-'))))); ?>
-        <?php //echo $form->error($model, 'department'); ?>
-    </div>
+
 
     <div class="row">
-        <?php //echo $form->labelEx($model, 'father_name'); ?>
+<?php //echo $form->labelEx($model, 'father_name');  ?>
         <?php echo $form->textFieldGroup($model, 'father_name', array('size' => 45, 'maxlength' => 45)); ?>
         <?php //echo $form->error($model, 'father_name'); ?>
     </div>
 
     <div class="row">
-        <?php //echo $form->labelEx($model, 'mother_name'); ?>
+<?php //echo $form->labelEx($model, 'mother_name');  ?>
         <?php echo $form->textFieldGroup($model, 'mother_name', array('size' => 45, 'maxlength' => 45)); ?>
         <?php //echo $form->error($model, 'mother_name'); ?>
     </div>
 
     <div class="row">
-        <?php //echo $form->labelEx($model, 'address'); ?>
+<?php //echo $form->labelEx($model, 'address');  ?>
         <?php echo $form->textFieldGroup($model, 'address', array('size' => 45, 'maxlength' => 45)); ?>
         <?php //echo $form->error($model, 'address'); ?>
     </div>
 
     <div class="row">
-        <?php //echo $form->labelEx($model, 'gender'); ?>
+<?php //echo $form->labelEx($model, 'gender');  ?>
         <?php echo $form->dropDownListGroup($model, 'gender', array('widgetOptions' => array('data' => array(1 => 'male', 0 => 'female')))); ?>
         <?php //echo $form->error($model, 'gender'); ?>
     </div>
 
     <div class="row">
-        <?php //echo $form->labelEx($model, 'identity_number'); ?>
+<?php //echo $form->labelEx($model, 'identity_number');  ?>
         <?php echo $form->textFieldGroup($model, 'identity_number', array('size' => 15, 'maxlength' => 15)); ?>
         <?php //echo $form->error($model, 'identity_number'); ?>
     </div>
 
     <div class="row">
-        <?php //echo $form->labelEx($model, 'afm'); ?>
+<?php //echo $form->labelEx($model, 'afm');  ?>
         <?php echo $form->textFieldGroup($model, 'afm', array('size' => 15, 'maxlength' => 15)); ?>
         <?php //echo $form->error($model, 'afm'); ?>
     </div>
 
     <div class="row">
-        <?php //echo $form->labelEx($model, 'doy'); ?>
+<?php //echo $form->labelEx($model, 'doy');  ?>
         <?php echo $form->textFieldGroup($model, 'doy', array('size' => 45, 'maxlength' => 45)); ?>
         <?php //echo $form->error($model, 'doy'); ?>
     </div>
 
     <div class="row">
-        <?php //echo $form->labelEx($model, 'ama_ika'); ?>
+<?php //echo $form->labelEx($model, 'ama_ika');  ?>
         <?php echo $form->textFieldGroup($model, 'ama_ika', array('size' => 45, 'maxlength' => 45)); ?>
         <?php //echo $form->error($model, 'ama_ika'); ?>
     </div>
 
     <div class="row">
-        <?php //echo $form->labelEx($model, 'amka'); ?>
+<?php //echo $form->labelEx($model, 'amka');  ?>
         <?php echo $form->textFieldGroup($model, 'amka', array('size' => 45, 'maxlength' => 45)); ?>
         <?php //echo $form->error($model, 'amka'); ?>
     </div>
 
     <div class="row">
-        <?php //echo $form->labelEx($model, 'year_in'); ?>
+<?php //echo $form->labelEx($model, 'year_in');  ?>
         <?php echo $form->textFieldGroup($model, 'year_in'); ?>
         <?php //echo $form->error($model, 'year_in'); ?>
     </div>
 
     <div class="row">
-        <?php //echo $form->labelEx($model, 'birth_day'); ?>
+<?php //echo $form->labelEx($model, 'birth_day');  ?>
         <?php echo $form->textFieldGroup($model, 'birth_day'); ?>
         <?php //echo $form->error($model, 'birth_day'); ?>
     </div>
 
     <div class="row">
-        <?php //echo $form->labelEx($model, 'IBAN'); ?>
+<?php //echo $form->labelEx($model, 'IBAN');  ?>
         <?php echo $form->textFieldGroup($model, 'IBAN', array('size' => 45, 'maxlength' => 45)); ?>
         <?php //echo $form->error($model, 'IBAN'); ?>
     </div>
 
     <div class="row buttons">
-        <?php
-        $this->widget(
-                'booster.widgets.TbButton', array('buttonType' => 'submit', 'label' => $model->isNew ? 'Δημιουργία' : 'Ενημέρωση', 'context' => 'primary')
-        );
-        ?>
+<?php
+$this->widget(
+        'booster.widgets.TbButton', array('buttonType' => 'submit', 'label' => $model->isNew ? 'Δημιουργία' : 'Ενημέρωση', 'context' => 'primary')
+);
+?>
     </div>
 
-    <?php $this->endWidget(); ?>
+<?php $this->endWidget(); ?>
 
 </div><!-- form -->

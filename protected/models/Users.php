@@ -67,6 +67,7 @@ class Users extends CActiveRecord
                         'company' => array(self::HAS_ONE, 'Company', 'user_id'),
 			'professors' => array(self::HAS_MANY, 'Professor', 'user_id'),
 			'students' => array(self::HAS_MANY, 'Student', 'user_id'),
+                        'departments' => array(self::HAS_MANY, 'Department', 'user_id'),
 		);
 	}
 
@@ -140,6 +141,15 @@ class Users extends CActiveRecord
 	}
         
        
+        
+        public static function getAdminList(){
+            return CHtml::listData(self::model()->findAllByAttributes(array('type'=>3)), 'id', 'bothnamesurname');
+        }
+        
+         public function getBothnamesurname() {
+        //echo $a==1 ? ($b==2 'a' : 'b') : 'c';
+        return $this->last_name . ' ' . $this->first_name;
+    }
                  
             
         

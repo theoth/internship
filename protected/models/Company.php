@@ -117,6 +117,11 @@ class Company extends CActiveRecord {
         //echo $a==1 ? ($b==2 'a' : 'b') : 'c';
         return $this->brand;
     }
+    
+    public function getBothnamesurname() {
+        //echo $a==1 ? ($b==2 'a' : 'b') : 'c';
+        return $this->user->last_name . ' ' . $this->user->first_name;
+    }
 
     public static function getList() {
 

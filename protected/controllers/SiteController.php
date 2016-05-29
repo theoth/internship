@@ -145,27 +145,27 @@ class SiteController extends Controller {
                         $this->redirect(array('Admin/site'));
                     }
 
-                    if ($u->type == 4) {
-                        $this->redirect(array('icteAdmin/site'));
+                    if ($u->type == 10) {
+                        $this->redirect(array('Admin/site'));
                     }
 
-                    if ($u->type == 5) {
-                        $this->redirect(array('mechAdmin/site'));
+                    if ($u->type == 11) {
+                        $this->redirect(array('Admin/site'));
                     }
 
-                    if ($u->type == 6) {
+                    if ($u->type == 12) {
                         $this->redirect(array('envengAdmin/site'));
                     }
 
-                    if ($u->type == 7) {
+                    if ($u->type == 13) {
                         $this->redirect(array('eledAdmin/site'));
                     }
 
-                    if ($u->type == 8) {
+                    if ($u->type == 14) {
                         $this->redirect(array('nuredAdmin/site'));
                     }
 
-                    if ($u->type == 9) {
+                    if ($u->type == 15) {
                         $this->redirect(array('eetfAdmin/site'));
                     }
                 } else {

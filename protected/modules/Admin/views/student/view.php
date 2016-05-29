@@ -27,7 +27,7 @@ $this->menu=array(
                 'user.last_name',
                 'user.username',
                 'user.password',
-		'department',
+		'department_id',
                 'user.aem',
 		'father_name',
 		'mother_name',

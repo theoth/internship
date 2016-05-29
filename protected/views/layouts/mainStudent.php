@@ -25,6 +25,7 @@
 	<div id="header">
             <?php 
             $u = Users::model()->findByAttributes(array('id'=>Yii::app()->user->id)); 
+            $student=Student::model()->findByAttributes(array('user_id'=>$u->id));
             ?>
 		<div id="logo"><?php echo  Yii::app()->name ?> </div>
                 <div><?php echo str_repeat('&nbsp;', 260) . $u->last_name; ?></div>
@@ -49,7 +50,7 @@
                                 array('label'=>'Οι αιτήσεις μου', 'url'=>array('/StudentAdmin/requestInternship')),
                                 array('label'=>'Θέσεις πρακτικής άσκησης', 'url'=>array('/StudentAdmin/internshipPosition')),
                                 array('label'=>'Η θέση μου', 'url'=>array('/StudentAdmin/internshipPosition/myindex')),
-				//array('label'=>'Users','url'=>array('/Admin/users')),
+				array('label'=>'Στοιχεία βαθμολογίας','url'=>array('/StudentAdmin/student/view','id'=>$student->id)),
                                 array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),

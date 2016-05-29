@@ -53,7 +53,35 @@ class RequestInternshipController extends Controller
         
         public function actionViewrequests()
 	{
+            $ins=InternshipPosition::model()->findAllByAttributes(array('status'=>3));
+            //var_dump($ins);die();
+            
+            $requests=array();
+           
+            foreach ($ins as $i){
+                $temp=RequestInternship::model()->findAllByAttributes(array('status'=>0,'internship_position_id'=>$i->id));
+                foreach($temp as $t){
+                $requests[]=$t;
+                }
+            }
+            //var_dump($requests);die();
+            $students=array();
+            foreach($requests as $r){
+            $students[RequestInternship::algorithm($r->student_id)]=Student::model()->findByAttributes(array('id'=>$r->student_id));
+            }
+            krsort($students);
+            //var_dump($students);die();
+            
+            $dataProvider=new CArrayDataProvider($students);
+            
+                //var_dump($dataProvider);die();
                 
+		$this->render('viewRequests',array(
+			'd' => $dataProvider,
+		));
+            
+            
+            /*
                 $dataProvider=new CActiveDataProvider('InternshipPosition', array(
                     'criteria'=>array(  
                         
@@ -76,7 +104,9 @@ class RequestInternshipController extends Controller
                 
 		$this->render('viewRequests',array(
 			'd' => $dataProvider,
-		));
+		)); 
+             
+             */
 	}
         
          public function actionViewInternshipPosition($id, $month = NULL) {

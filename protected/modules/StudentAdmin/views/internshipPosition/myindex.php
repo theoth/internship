@@ -18,6 +18,7 @@ $this->menu=array(
 	//array('label'=>'List InternshipPosition', 'url'=>array('index')),
 	//array('label'=>'Create InternshipPosition', 'url'=>array('create')),
 	array('label'=>'Υποβολή στοιχείων', 'url'=>array('update', 'id'=>$model->id)),
+        array('label'=>'Συμπλήρωση ερωτηματολογίου', 'url'=>array('questionnaireStudent/update','id' => $model->questionnaire_student_id)),
 	//array('label'=>'Delete InternshipPosition', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
 	//array('label'=>'Manage InternshipPosition', 'url'=>array('admin')),
 );

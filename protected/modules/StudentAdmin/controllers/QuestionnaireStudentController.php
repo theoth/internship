@@ -27,10 +27,7 @@ class QuestionnaireStudentController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
+			
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
 				'users'=>array('@'),
@@ -40,6 +37,7 @@ class QuestionnaireStudentController extends Controller
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
+                                'actions' => array('index','view','delete'),
 				'users'=>array('*'),
 			),
 		);
@@ -62,21 +60,38 @@ class QuestionnaireStudentController extends Controller
 	 */
 	public function actionCreate()
 	{
+                $student=Student::model()->findByAttributes(array('user_id' => Yii::app()->user->id));
+                //var_dump($student); die();
+                $in=InternshipPosition::model()->findByAttributes(array('student_id' => $student->id));
+                //var_dump($in); die();
+                $qu = QuestionnaireStudent::model()->findByPk($in->questionnaire_student_id);
+                
+                var_dump($qu); die();
+                if($qu==NULL){
+                
 		$model=new QuestionnaireStudent;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
+                //var_dump($company);
+                //die();
+               // $model->student_id=$student->id;
 
 		if(isset($_POST['QuestionnaireStudent']))
 		{
 			$model->attributes=$_POST['QuestionnaireStudent'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('internshipPosition/myindex'));
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
 		));
+                
+                }
+                else{
+                    $this->actionUpdate($model->id);
+                }
 	}
 
 	/**
@@ -90,12 +105,17 @@ class QuestionnaireStudentController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
+                
+               // $student=Student::model()->findByAttributes(array('user_id' => Yii::app()->user->id));
+                //var_dump($company);
+                //die();
+               // $model->student_id=$student->id;
 
 		if(isset($_POST['QuestionnaireStudent']))
 		{
 			$model->attributes=$_POST['QuestionnaireStudent'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+				$this->redirect(array('internshipPosition/myindex'));
 		}
 
 		$this->render('update',array(

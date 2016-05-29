@@ -11,7 +11,7 @@ class ProfessorForm extends CFormModel
 	public $password;
         public $first_name;
         public $last_name;
-        public $department;
+        public $department_id;
         public $email;
 	public $telephone;
 	public $academicid;
@@ -28,7 +28,7 @@ class ProfessorForm extends CFormModel
 	{
 		return array(
 			// name, email, subject and body are required
-			array('username,password,first_name,last_name,department,email,telephone,activated,academicid', 'required'),
+			array('username,password,first_name,last_name,department_id,email,telephone,activated,academicid', 'required'),
 			array('activated', 'numerical', 'integerOnly' => true),
                         // email has to be a valid email address
 			array('username, last_name, first_name', 'length', 'max' => 25),

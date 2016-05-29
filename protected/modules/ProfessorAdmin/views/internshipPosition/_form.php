@@ -84,7 +84,7 @@
 
     $date_current = date('Y-m-d');
     //echo 'date current is ' . $date_current;
-    $deadline = date('Y-m-d', strtotime($model->date_end . '+ 10 days'));
+    //$deadline = date('Y-m-d', strtotime($model->date_end . '+ 10 days'));
 
 
     
@@ -114,7 +114,7 @@
     <?php } else {
         ?>
         <script>
-            countdown('<?php echo $deadline; ?>', 4);
+            countdown('<?php echo $model->deadline; ?>', 4);
 
         </script>
         <span><b>Απομένουν </b></span><span id="countdown4"></span> <span><b> για να ολοκληρωθεί η πρακτική άσκηση</b>.</span>
@@ -132,7 +132,7 @@
             
         }
         
-        if ($date_current > $deadline) {
+        if ($date_current > $model->deadline) {
         $flag1 = true;
         $flag2 = true;
         $flag3 = true;

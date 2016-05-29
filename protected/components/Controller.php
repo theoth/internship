@@ -51,7 +51,7 @@ class Controller extends CController {
     }
 
      public static function isUserAdmin() {
-        if (self::typeUser() == 3)
+        if (self::typeUser() == 3 || self::typeUser()>=10)
             return true;
         else
             return false;

@@ -12,11 +12,11 @@ $this->menu=array(
 	//array('label'=>'Create InternshipPosition', 'url'=>array('create')),
 	array('label'=>'Υποβολή στοιχείων', 'url'=>array('update', 'id'=>$model->id)),
 	//array('label'=>'Delete InternshipPosition', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	//array('label'=>'Manage InternshipPosition', 'url'=>array('admin')),
+        array('label'=>'Συμπλήρωση ερωτηματολογίου', 'url'=>array('questionnaireProfessor/update','id' => $model->questionnaire_professor_id)),
 );
 ?>
 
-<h1>Εμφάνιση θέσης πρακτικής άσκησης με κωδικό:  <?php echo $model->id; ?></h1>
+<h1>Θέση πρακτικής άσκησης | <?php echo $model->id; ?></h1>
 
 <?php $this->widget('booster.widgets.TbDetailView', array(
 	'data'=>$model,

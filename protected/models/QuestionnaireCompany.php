@@ -47,8 +47,8 @@ class QuestionnaireCompany extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('company_id', 'required'),
-			array('id, company_id, in1, in2, in3, in4, in5, in6, in7, in8, st1, st2, st3, st4, st5, st6, st7, st8, st9, st10', 'numerical', 'integerOnly'=>true),
+			
+			array('id, in1, in2, in3, in4, in5, in6, in7, in8, st1, st2, st3, st4, st5, st6, st7, st8, st9, st10', 'numerical', 'integerOnly'=>true),
 			array('comments', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -64,7 +64,8 @@ class QuestionnaireCompany extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'company' => array(self::BELONGS_TO, 'Company', 'company_id'),
+                    'nternshipPositions' => array(self::HAS_MANY, 'InternshipPosition', 'questionnnaire_company_id'),
+
 		);
 	}
 
@@ -75,7 +76,7 @@ class QuestionnaireCompany extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'company_id' => 'Company',
+			
 			'in1' => 'Πιστεύετε ότι τα προγράμματα πρακτικής άσκησης ωφελούν την υπηρεσία/ επιχείρηση/ οργανισμό σας;',
 			'in2' => 'Πιστεύετε ότι η Πρακτική Άσκηση προσέφερε ανατροφοδότηση στο φορέα σας;',
 			'in3' => 'Πόσο ικανοποιητική θεωρείτε τη συνεργασία σας με το γραφείο πρακτικής άσκησης του τμήματος;',
@@ -117,7 +118,7 @@ class QuestionnaireCompany extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('company_id',$this->company_id);
+		
 		$criteria->compare('in1',$this->in1);
 		$criteria->compare('in2',$this->in2);
 		$criteria->compare('in3',$this->in3);

@@ -10,15 +10,18 @@
 	<?php
          if (!empty($this->menu)) {
 		$this->widget('booster.widgets.TbNavbar', array(
+                    
     'brand' => false, // <-- This dysplays some title on the left
                      'fixed' => 'right',
                      'fluid'=>'true',
                      'type' => 'inverse',
     'items' => array(
         array(
+            //'encodeLabel' => false,
             'class' => 'booster.widgets.TbMenu',
             'type' => 'navbar',
             'items'=>$this->menu,
+            
             'htmlOptions'=>array('class'=>'operations'),
         )
     )

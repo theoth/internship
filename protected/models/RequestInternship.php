@@ -139,5 +139,98 @@ class RequestInternship extends CActiveRecord {
     public static function model($className = __CLASS__) {
         return parent::model($className);
     }
+    
+    public static function algorithm($sid){
+        
+        $student=Student::model()->findByPk($sid);
+        //var_dump($student);die();
+        $de=Department::model()->findByPk($student->department_id);
+        
+        // perasmena ypoxrewtika
+        $passed_req_courses=$student->passed_courses-$student->passed_win_el_courses-$student->passed_sum_el_courses;
+        
+        //arithmitikos mesos oros ypoxrewtikwn
+        $req_average=($student->passed_courses*$student->gen_average-$student->win_el_average*$student->passed_win_el_courses-$student->sum_el_average*$student->passed_sum_el_courses)/$passed_req_courses;
+        
+        //arithmitikos mesos oros epilogis
+        $el_average=($student->win_el_average*$student->passed_win_el_courses+$student->sum_el_average*$student->passed_sum_el_courses)/($student->passed_sum_el_courses+$student->passed_win_el_courses);
+        
+        //eksamino foititi pou exei oloklirwsei
+        $year_stu=date('Y')-$student->year_in;
+        $month=date('n');
+        if ($month>2){
+            $semester=$year_stu*2-1;
+        }
+        else{
+            $semester=$year_stu*2-1-1;
+        }
+        
+        //echo('student is'. $student->getBothnamesurname() . 'και εξαμηνο '. $semester);
+        
+        if($semester==0){
+            return 0;
+        }
+        else if($semester==1){
+            $courses_req=$de->re_courses1;
+            $courses_el=$de->el_courses1;
+        }
+        else if($semester==2){
+            $courses_req=$de->re_courses1+$de->re_courses2;
+            $courses_el=$de->el_courses1+$de->el_courses2;
+        }
+        else if($semester==3){
+            $courses_req=$de->re_courses1+$de->re_courses2+$de->re_courses3;
+            $courses_el=$de->el_courses1+$de->el_courses2+$de->el_courses3;
+        }
+        else if($semester==4){
+            $courses_req=$de->re_courses1+$de->re_courses2+$de->re_courses3+$de->re_courses4;
+            $courses_el=$de->el_courses1+$de->el_courses2+$de->el_courses3+$de->el_courses4;
+        }
+        else if($semester==5){
+            $courses_req=$de->re_courses1+$de->re_courses2+$de->re_courses3+$de->re_courses4+$de->re_courses5;
+            $courses_el=$de->el_courses1+$de->el_courses2+$de->el_courses3+$de->el_courses4+$de->el_courses5;
+        }
+        else if($semester==6){
+            $courses_req=$de->re_courses1+$de->re_courses2+$de->re_courses3+$de->re_courses4+$de->re_courses5+$de->re_courses6;
+            $courses_el=$de->el_courses1+$de->el_courses2+$de->el_courses3+$de->el_courses4+$de->el_courses5+$de->el_courses6;
+        }
+        else if($semester==7){
+            $courses_req=$de->re_courses1+$de->re_courses2+$de->re_courses3+$de->re_courses4+$de->re_courses5+$de->re_courses6+$de->re_courses7;
+            $courses_el=$de->el_courses1+$de->el_courses2+$de->el_courses3+$de->el_courses4+$de->el_courses5+$de->el_courses6+$de->el_courses7;
+        }
+        else if($semester==8){
+            $courses_req=$de->re_courses1+$de->re_courses2+$de->re_courses3+$de->re_courses4+$de->re_courses5+$de->re_courses6+$de->re_courses7+$de->re_courses8;
+            $courses_el=$de->el_courses1+$de->el_courses2+$de->el_courses3+$de->el_courses4+$de->el_courses5+$de->el_courses6+$de->el_courses7+$de->el_courses8;
+        }
+        else if($semester==9){
+            $courses_req=$de->re_courses1+$de->re_courses2+$de->re_courses3+$de->re_courses4+$de->re_courses5+$de->re_courses6+$de->re_courses7+$de->re_courses8+$de->re_courses9;
+            $courses_el=$de->el_courses1+$de->el_courses2+$de->el_courses3+$de->el_courses4+$de->el_courses5+$de->el_courses6+$de->el_courses7+$de->el_courses8+$de->el_courses9;
+        }
+        else{
+            $courses_req=$de->re_courses1+$de->re_courses2+$de->re_courses3+$de->re_courses4+$de->re_courses5+$de->re_courses6+$de->re_courses7+$de->re_courses8+$de->re_courses9+$de->re_courses10;
+            $courses_el=$de->el_courses1+$de->el_courses2+$de->el_courses3+$de->el_courses4+$de->el_courses5+$de->el_courses6+$de->el_courses7+$de->el_courses8+$de->el_courses9+$de->el_courses10;
+        }
+        
+        //logos X
+        $X=$passed_req_courses/$courses_req;
+        
+        //logos Y
+        $Y=($student->passed_sum_el_courses+$student->passed_win_el_courses)/$courses_el;
+        
+        // syntelestes varitatas gia kathe meso oro kai pollaplasiasmos me to 100
+        $req_average=$req_average*2;
+        $el_average=$el_average*2;
+        
+        $average=($el_average+$req_average)/2;
+        $average=$average*100;
+        
+        //total score
+        $score=($X+$Y/2)*$average;
+        
+        return round($score,2);
+        
+        
+        
+    }
 
 }

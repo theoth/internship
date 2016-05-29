@@ -9,6 +9,8 @@ $Students=Student::GetList();
 
 $comp=Company::model()->findByPk(Yii::app()->user->id);
 
+$Departments=Department::GetList();
+
 //$comp_name=$comp->company->brand;
 
 ?>
@@ -27,16 +29,9 @@ $comp=Company::model()->findByPk(Yii::app()->user->id);
     <br>
     <br>
 
-	<?php //echo $form->errorSummary($model); ?>
+	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
-        
-                <?php //echo $form->labelEx($model,'period'); ?>
-		<?php echo $form->dropDownListGroup($model,'period',array('widgetOptions' => array('data' => array( InternshipPosition::periodList())))); ?>
-		<?php //echo $form->error($model,'period'); ?>
-            
-        
-    </div>
+	
 
 	
 
@@ -59,6 +54,12 @@ $comp=Company::model()->findByPk(Yii::app()->user->id);
 		<?php echo $form->textAreaGroup($model,'description',array('rows'=>6, 'cols'=>50)); ?>
 		<?php //echo $form->error($model,'description'); ?>
 	</div>
+    
+        <div class="row">
+        <?php //echo $form->labelEx($model, 'department'); ?>
+        <?php echo $form->dropDownListGroup($model, 'department_id', array('widgetOptions' => array('data' => $Departments, 'htmlOptions'=>array('empty' => '-')))); ?>
+        <?php //echo $form->error($model, 'department'); ?>
+        </div>
 
 	
 
@@ -67,6 +68,57 @@ $comp=Company::model()->findByPk(Yii::app()->user->id);
 		<?php echo $form->textFieldGroup($model,'year',array('widgetOptions' =>array('htmlOptions' => array('disabled' => true)))); ?>
 		<?php //echo $form->error($model,'year'); ?>
 	</div>
+    
+        <div class="row">
+		<?php //echo $form->labelEx($model,'published'); ?>
+		<?php echo $form->checkboxGroup($model,'repeated'); ?>
+		<?php //echo $form->error($model,'published'); ?>
+	</div>
+    
+    <?php 
+    $flag=true;
+    if($form->checkboxGroup($model,'repeated')==1){
+        $flag=false;
+    }
+    ?>
+   <script>
+    $('#InternshipPosition_repeated').click(function () {
+        
+        if ($(this).is(':checked')){
+            $('#InternshipPosition_r_date_end').removeAttr('disabled');
+        }
+        else{
+            $('#InternshipPosition_r_date_end').attr('disabled', 'disabled');
+        }
+    });
+    </script>
+    
+    
+    
+    <div class="row">
+        
+        <?php echo $form->datePickerGroup(
+			$model,
+			'r_date_end',
+			array(
+				'widgetOptions' => array(
+					'options' => array(
+						'language' => 'en',
+                                                'format' => 'yyyy-mm-dd'
+					),
+                                        'htmlOptions' => array(
+                                            'disabled' => $flag
+                                        )
+				),
+				'wrapperHtmlOptions' => array(
+					'class' => 'col-sm-5',
+				),
+				'hint' => 'Η θέση θα δύναται να ανατίθεται πολλαπλές φορές έως την ημερομηνία που θα καθορίσετε.',
+				'prepend' => '<i class="glyphicon glyphicon-calendar"></i>'
+			)
+		); ?>
+        
+    </div>
 
 	
 
