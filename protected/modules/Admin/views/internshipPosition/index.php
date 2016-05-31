@@ -12,7 +12,7 @@ $this->menu = array(
     array('label' => 'Ιστορικό', 'url' => array('history')),
     array('label' => 'Νέες αιτήσεις θέσεων', 'url' => array('viewNewPositions')),
     array('label' => 'Αναλυτική κατάσταση', 'url' => array('printOutForm')),
-    array('label' => 'Στατιστικά', 'url' => array('Statistics')),
+    array('label' => 'Στατιστικά', 'url' => array('statisticsForm')),
 );
 ?>
 

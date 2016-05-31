@@ -3,12 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/internship/protected/modules/ProfessorAdmin/controllers/QuestionnaireProfessorController.php</file>
-            <file>file:/C:/wamp/www/internship/protected/modules/Admin/controllers/QuestionnaireProfessorController.php</file>
-            <file>file:/C:/wamp/www/internship/protected/modules/Admin/views/questionnaireProfessor/view.php</file>
-            <file>file:/C:/wamp/www/internship/protected/modules/ProfessorAdmin/views/questionnaireProfessor/_form.php</file>
-            <file>file:/C:/wamp/www/internship/protected/modules/ProfessorAdmin/views/questionnaireProfessor/update.php</file>
-            <file>file:/C:/wamp/www/internship/protected/modules/StudentAdmin/controllers/QuestionnaireStudentController.php</file>
+            <file>file:/C:/wamp/www/internship/protected/models/printOutForm.php</file>
+            <file>file:/C:/wamp/www/internship/js/highcharts.js</file>
+            <file>file:/C:/wamp/www/internship/protected/modules/Admin/views/internshipPosition/_statisticsForm.php</file>
+            <file>file:/C:/wamp/www/internship/protected/modules/StudentAdmin/views/internshipPosition/view.php</file>
+            <file>file:/C:/wamp/www/internship/protected/modules/Admin/views/internshipPosition/statistics.php</file>
+            <file>file:/C:/wamp/www/internship/protected/modules/Admin/views/internshipPosition/index.php</file>
+            <file>file:/C:/wamp/www/internship/protected/modules/Admin/views/internshipPosition/printOut.php</file>
+            <file>file:/C:/wamp/www/internship/protected/modules/Admin/controllers/InternshipPositionController.php</file>
+            <file>file:/C:/wamp/www/internship/protected/models/QuestionnaireStudent.php</file>
+            <file>file:/C:/wamp/www/internship/js/highcharts_exporting.js</file>
+            <file>file:/C:/wamp/www/internship/protected/models/statisticsForm.php</file>
         </group>
     </open-files>
 </project-private>

@@ -32,8 +32,8 @@ class Utils {
     
     public static function naiOxi() {
         return array(
-            '1' => 'Ναι',
-            '2' => 'Όχι',
+            '6' => 'Ναι',
+            '7' => 'Όχι',
             
         );
     }

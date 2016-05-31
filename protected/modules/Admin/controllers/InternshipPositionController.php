@@ -26,7 +26,7 @@ class InternshipPositionController extends Controller {
     public function accessRules() {
         return array(
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create','statistics', 'studentBook','ProfessorBook','CompanyBook', 'update', 'index', 'view', 'admin', 'delete', 'award', 'history', 'viewNewPositions', 'publishPosition', 'detailsNewPosition', 'printOutForm', 'printOutGrid'),
+                'actions' => array('statisticsForm', 'create','statistics', 'studentBook','ProfessorBook','CompanyBook', 'update', 'index', 'view', 'admin', 'delete', 'award', 'history', 'viewNewPositions', 'publishPosition', 'detailsNewPosition', 'printOutForm', 'printOutGrid'),
                 'expression' => array('Controller', 'isUserAdmin'),
             ),
             array('deny', // deny all users
@@ -47,9 +47,37 @@ class InternshipPositionController extends Controller {
         ));
     }
     
-    public function actionStatistics() {
-        $this->render('statistics', array(
+    
+    public function actionStatisticsForm() {
+        //echo($from.$to);die();
+       
+        $model=new StatisticsForm();
+        
+        echo CHtml::errorSummary($model);
+        
+        if (isset($_POST['StatisticsForm'])) {
             
+            $model->attributes = $_POST['StatisticsForm'];
+            $this->redirect(array('statistics', 'from' => $model->from, 'to' => $model->to));
+           
+        }
+        
+         $this->render('_statisticsForm', array(
+            'model' => $model,
+        ));
+       
+        
+    }
+    
+    
+    
+    public function actionStatistics($from,$to) {
+        //echo($from.$to);die();
+       
+        $this->render('statistics', array(
+            'from'=>$from,
+            'to'=> $to,
+            //'model'=>$model,
         ));
     }
 
